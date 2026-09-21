@@ -1,6 +1,6 @@
-/* =========================
-   ESTILOS GENERALES
-   ========================= */
+/* =====================================================
+   SIGEM - ESTILOS GENERALES
+   ===================================================== */
 
 * {
     box-sizing: border-box;
@@ -9,14 +9,14 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f6f8;
+    background-color: #f3f5f7;
     color: #222;
 }
 
 
-/* =========================
-   CONTENEDOR DEL LOGIN
-   ========================= */
+/* =====================================================
+   LOGIN
+   ===================================================== */
 
 .login-container {
     min-height: 100vh;
@@ -27,11 +27,6 @@ body {
 
     padding: 20px;
 }
-
-
-/* =========================
-   TARJETA DEL LOGIN
-   ========================= */
 
 .login-card {
     width: 100%;
@@ -49,9 +44,7 @@ body {
 }
 
 
-/* =========================
-   ENCABEZADO
-   ========================= */
+/* Encabezado del login */
 
 .login-header {
     text-align: center;
@@ -60,22 +53,17 @@ body {
 
 .login-header h1 {
     margin: 0;
-
     font-size: 32px;
 }
 
 .login-header p {
     margin-top: 6px;
-
     color: #666;
-
     font-size: 14px;
 }
 
 
-/* =========================
-   TITULO
-   ========================= */
+/* Título */
 
 .login-title {
     margin-bottom: 25px;
@@ -83,22 +71,17 @@ body {
 
 .login-title h2 {
     margin: 0 0 6px 0;
-
     font-size: 22px;
 }
 
 .login-title p {
     margin: 0;
-
     color: #666;
-
     font-size: 14px;
 }
 
 
-/* =========================
-   FORMULARIO
-   ========================= */
+/* Formulario */
 
 .form-group {
     margin-bottom: 20px;
@@ -128,14 +111,11 @@ body {
 
 .form-group input:focus {
     outline: none;
-
-    border-color: #333;
+    border-color: #2f80c9;
 }
 
 
-/* =========================
-   BOTON
-   ========================= */
+/* Botón */
 
 .btn-login {
     width: 100%;
@@ -146,7 +126,7 @@ body {
 
     border-radius: 6px;
 
-    background-color: #222;
+    background-color: #2f80c9;
 
     color: white;
 
@@ -156,27 +136,431 @@ body {
 }
 
 .btn-login:hover {
-    background-color: #444;
+    background-color: #246da9;
 }
 
-/* =========================
-   MENSAJE DEL LOGIN
-   ========================= */
+
+/* Mensaje */
 
 .mensaje-login {
     margin-top: 15px;
+
     text-align: center;
+
     font-size: 14px;
 }
 
-/* =========================
+
+/* =====================================================
+   ENCABEZADO GENERAL
+   ===================================================== */
+
+.encabezado {
+    background-color: white;
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 18px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+.logo span {
+    font-size: 14px;
+
+    color: #666;
+}
+
+.usuario-sesion {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   ESTRUCTURA PRINCIPAL
+   ===================================================== */
+
+.layout {
+    display: flex;
+
+    min-height: calc(100vh - 100px);
+}
+
+
+/* =====================================================
+   MENU LATERAL
+   ===================================================== */
+
+.menu {
+    width: 220px;
+
+    min-width: 220px;
+
+    background-color: #17395c;
+
+    padding: 25px 16px;
+}
+
+.menu nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.menu a {
+    display: block;
+
+    text-decoration: none;
+
+    color: white;
+
+    padding: 12px 15px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+}
+
+.menu a:hover {
+    background-color: #24517d;
+}
+
+.menu .menu-activo {
+    background-color: #2f80c9;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+
+/* Iconos del menú */
+
+.menu-icono {
+    display: inline-block;
+
+    width: 25px;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   CONTENIDO
+   ===================================================== */
+
+.contenido {
+    flex: 1;
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 40px 60px;
+}
+
+
+/* =====================================================
+   TITULO DE PAGINA
+   ===================================================== */
+
+.pagina-titulo {
+    margin-bottom: 32px;
+}
+
+.pagina-titulo h2 {
+    margin: 0 0 8px 0;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+.pagina-titulo p {
+    margin: 0;
+
+    color: #666;
+}
+
+
+/* =====================================================
+   TARJETAS DE RESUMEN
+   ===================================================== */
+
+.tarjetas {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.tarjeta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    background-color: white;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 10px;
+
+    padding: 24px 28px;
+
+    min-height: 135px;
+}
+
+.tarjeta h3 {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: #555;
+}
+
+.tarjeta strong {
+    display: block;
+
+    font-size: 32px;
+
+    margin: 8px 0 5px 0;
+}
+
+.tarjeta p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* Iconos de tarjetas */
+
+.tarjeta-icono {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: #e8f2fc;
+
+    color: #1672c4;
+
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   SECCIONES
+   ===================================================== */
+
+.seccion {
+    background-color: white;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 10px;
+
+    padding: 28px;
+
+    margin-bottom: 28px;
+}
+
+.seccion h3 {
+    margin-top: 0;
+
+    margin-bottom: 5px;
+}
+
+.seccion > p {
+    margin-top: 0;
+
+    color: #666;
+}
+
+
+/* =====================================================
+   ACCIONES RAPIDAS
+   ===================================================== */
+
+.acciones {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+.accion {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 17px 18px;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    background-color: white;
+}
+
+.accion:hover {
+    background-color: #f7f7f7;
+}
+
+.accion span {
+    font-size: 20px;
+}
+
+.accion-contenido {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.accion-icono {
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #e8f2fc;
+
+    color: #1672c4;
+
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   ESTADOS DE REPORTES
+   ===================================================== */
+
+.estados {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+.estados div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 18px;
+
+    background-color: #f7f8fa;
+
+    border-radius: 8px;
+}
+
+.estados strong {
+    font-size: 24px;
+}
+
+.estados span {
+    color: #666;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
    RESPONSIVE
-   ========================= */
+   ===================================================== */
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
 
-    .login-card {
-        padding: 25px;
+    .layout {
+        flex-direction: column;
     }
 
+    .menu {
+        width: 100%;
+
+        min-width: 0;
+
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu nav {
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .estados {
+        grid-template-columns: 1fr;
+    }
+
+    .contenido {
+        padding: 25px;
+    }
 }

@@ -1,10 +1,3 @@
-console.log("SIGEM iniciado correctamente");
-
-
-/* =========================
-   USUARIOS DE PRUEBA
-   ========================= */
-
 const usuarios = [
     {
         usuario: "operario@plastipack.com",
@@ -28,58 +21,37 @@ const usuarios = [
     }
 ];
 
-
-/* =========================
-   FORMULARIO DE LOGIN
-   ========================= */
-
-const loginForm = document.getElementById("loginForm");
+const formularioLogin = document.getElementById("loginForm");
 const mensajeLogin = document.getElementById("mensajeLogin");
 
-loginForm.addEventListener("submit", function(event) {
+if (formularioLogin) {
 
-    event.preventDefault();
+    formularioLogin.addEventListener("submit", function(evento) {
 
-    const usuarioIngresado = document.getElementById("usuario").value;
-    const passwordIngresada = document.getElementById("password").value;
+        evento.preventDefault();
 
+        const usuarioIngresado = document.getElementById("usuario").value.trim();
+        const passwordIngresado = document.getElementById("password").value;
 
-    /* Validar campos vacíos */
+        const usuarioEncontrado = usuarios.find(function(usuario) {
+            return usuario.usuario === usuarioIngresado &&
+                   usuario.password === passwordIngresado;
+        });
 
-    if (usuarioIngresado === "" || passwordIngresada === "") {
+        if (!usuarioEncontrado) {
 
-        mensajeLogin.textContent =
-            "Por favor, complete todos los campos.";
+            mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
+            mensajeLogin.style.color = "red";
 
-        return;
-    }
+            return;
+        }
 
+        mensajeLogin.textContent = "Inicio de sesión exitoso.";
+        mensajeLogin.style.color = "green";
 
-    /* Buscar usuario */
-
-    const usuarioEncontrado = usuarios.find(function(usuario) {
-
-        return usuario.usuario === usuarioIngresado &&
-               usuario.password === passwordIngresada;
+        if (usuarioEncontrado.rol === "operario") {
+            window.location.href = "pages/operario.html";
+        }
 
     });
-
-
-    /* Validar credenciales */
-
-    if (usuarioEncontrado) {
-
-        mensajeLogin.textContent =
-            "Inicio de sesión correcto.";
-
-        console.log("Usuario:", usuarioEncontrado.usuario);
-        console.log("Rol:", usuarioEncontrado.rol);
-
-    } else {
-
-        mensajeLogin.textContent =
-            "Usuario o contraseña incorrectos.";
-
-    }
-
-});
+}
