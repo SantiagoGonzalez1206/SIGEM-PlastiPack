@@ -1,6 +1,7 @@
 console.log("SIGEM iniciado correctamente");
 
 const loginForm = document.getElementById("loginForm");
+const mensajeLogin = document.getElementById("mensajeLogin");
 
 loginForm.addEventListener("submit", function(event) {
 
@@ -10,10 +11,12 @@ loginForm.addEventListener("submit", function(event) {
     const password = document.getElementById("password").value;
 
     if (usuario === "" || password === "") {
-        alert("Por favor, complete todos los campos.");
+
+        mensajeLogin.textContent = "Por favor, complete todos los campos.";
+
         return;
     }
 
-    alert("Datos ingresados correctamente.");
+    mensajeLogin.textContent = "Datos ingresados correctamente.";
 
 });
