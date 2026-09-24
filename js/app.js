@@ -1,56 +1,74 @@
-const usuarios = [
-    {
-        usuario: "operario@plastipack.com",
-        password: "1234",
-        rol: "operario"
-    },
-    {
-        usuario: "tecnico@plastipack.com",
-        password: "1234",
-        rol: "tecnico"
-    },
-    {
-        usuario: "jefe@plastipack.com",
-        password: "1234",
-        rol: "jefe"
-    },
-    {
-        usuario: "gerente@plastipack.com",
-        password: "1234",
-        rol: "gerente"
-    }
-];
-
 const formularioLogin = document.getElementById("loginForm");
 const mensajeLogin = document.getElementById("mensajeLogin");
 
 if (formularioLogin) {
 
-    formularioLogin.addEventListener("submit", function(evento) {
+    formularioLogin.addEventListener("submit", async function(evento) {
 
         evento.preventDefault();
 
         const usuarioIngresado = document.getElementById("usuario").value.trim();
         const passwordIngresado = document.getElementById("password").value;
 
-        const usuarioEncontrado = usuarios.find(function(usuario) {
-            return usuario.usuario === usuarioIngresado &&
-                   usuario.password === passwordIngresado;
-        });
+        // Validar campos vacíos
 
-        if (!usuarioEncontrado) {
+        if (usuarioIngresado === "" || passwordIngresado === "") {
 
-            mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
+            mensajeLogin.textContent = "Por favor, completa todos los campos.";
             mensajeLogin.style.color = "red";
 
             return;
         }
 
-        mensajeLogin.textContent = "Inicio de sesión exitoso.";
-        mensajeLogin.style.color = "green";
+        try {
 
-        if (usuarioEncontrado.rol === "operario") {
-            window.location.href = "pages/operario.html";
+            const respuesta = await fetch("http://localhost:3000/api/auth/login", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    usuario: usuarioIngresado,
+                    password: passwordIngresado
+                })
+
+            });
+
+            const datos = await respuesta.json();
+
+            if (!respuesta.ok) {
+
+                mensajeLogin.textContent = datos.mensaje;
+                mensajeLogin.style.color = "red";
+
+                return;
+            }
+
+            mensajeLogin.textContent = datos.mensaje;
+            mensajeLogin.style.color = "green";
+
+            // Guardar información básica de la sesión
+
+            localStorage.setItem("usuario", datos.usuario);
+            localStorage.setItem("rol", datos.rol);
+
+            // Redireccionar según el rol
+
+            if (datos.rol === "operario") {
+
+                window.location.href = "pages/operario.html";
+
+            }
+
+        } catch (error) {
+
+            mensajeLogin.textContent = "No se pudo conectar con el servidor.";
+            mensajeLogin.style.color = "red";
+
+            console.error("Error de conexión:", error);
         }
 
     });
