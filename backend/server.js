@@ -3,6 +3,8 @@ const cors = require("cors");
 
 const apiRoutes = require("./routes/api.routes");
 const authRoutes = require("./routes/auth.routes");
+const maquinasRoutes = require("./routes/maquinas.routes");
+const solicitudesRoutes = require("./routes/solicitudes.routes");
 
 const app = express();
 
@@ -20,6 +22,8 @@ app.use(express.json());
 
 app.use("/api", apiRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/maquinas", maquinasRoutes);
+app.use("/api/solicitudes", solicitudesRoutes);
 
 
 // Servidor

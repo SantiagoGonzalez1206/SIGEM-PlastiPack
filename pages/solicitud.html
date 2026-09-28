@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva solicitud - SIGEM</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div>
+            <h1>SIGEM</h1>
+            <p>Gestión de mantenimiento</p>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Operario</span>
+        </div>
+    </header>
+
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <nav>
+                <a href="operario.html">Inicio</a>
+                <a href="solicitud.html" class="activo">Nueva solicitud</a>
+                <a href="reportes-operario.html">Mis reportes</a>
+            </nav>
+
+        </aside>
+
+
+        <main class="contenido">
+
+            <section class="seccion">
+
+                <h2>Nueva solicitud de mantenimiento</h2>
+
+                <p>
+                    Registra una solicitud de mantenimiento para una máquina.
+                </p>
+
+
+                <form id="formularioSolicitud">
+
+                    <div class="formulario-grid">
+
+                        <div class="campo">
+                            <label for="codigoMaquina">
+                                Código de máquina
+                            </label>
+
+                            <input
+                                type="text"
+                                id="codigoMaquina"
+                                placeholder="Ej: M001"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="nombreMaquina">
+                                Nombre de máquina
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombreMaquina"
+                                readonly
+                            >
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="ubicacion">
+                                Ubicación
+                            </label>
+
+                            <input
+                                type="text"
+                                id="ubicacion"
+                                readonly
+                            >
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="tipoMantenimiento">
+                                Tipo de mantenimiento
+                            </label>
+
+                            <select id="tipoMantenimiento" required>
+                                <option value="">Seleccione</option>
+                                <option value="Correctivo">Correctivo</option>
+                                <option value="Preventivo">Preventivo</option>
+                            </select>
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="prioridad">
+                                Prioridad
+                            </label>
+
+                            <select id="prioridad" required>
+                                <option value="">Seleccione</option>
+                                <option value="Baja">Baja</option>
+                                <option value="Media">Media</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+
+
+                        <div class="campo campo-completo">
+                            <label for="descripcionFalla">
+                                Descripción de la falla
+                            </label>
+
+                            <textarea
+                                id="descripcionFalla"
+                                rows="5"
+                                placeholder="Describe la falla presentada..."
+                                required
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <p id="mensajeSolicitud"></p>
+
+
+                    <div class="acciones-formulario">
+
+                        <button type="submit" class="boton-principal">
+                            Registrar solicitud
+                        </button>
+
+                        <a href="operario.html" class="boton-secundario">
+                            Cancelar
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/solicitud.js"></script>
+
+</body>
+</html>
