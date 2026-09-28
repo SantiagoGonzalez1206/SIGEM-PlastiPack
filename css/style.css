@@ -564,3 +564,260 @@ body {
         padding: 25px;
     }
 }
+
+/* ================================
+   FORMULARIO NUEVA SOLICITUD
+================================ */
+
+.formulario-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #17395c;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d4dbe2;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #2f80c9;
+    box-shadow: 0 0 0 2px rgba(47, 128, 201, 0.1);
+}
+
+.campo input[readonly] {
+    background-color: #f1f3f5;
+    color: #555;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+#mensajeSolicitud {
+    min-height: 22px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.boton-principal,
+.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+.boton-principal {
+    background-color: #2f80c9;
+    color: white;
+}
+
+.boton-principal:hover {
+    background-color: #256fae;
+}
+
+.boton-secundario {
+    background-color: #e5e9ed;
+    color: #17395c;
+}
+
+.boton-secundario:hover {
+    background-color: #d7dde3;
+}
+
+/* ================================
+   ESTRUCTURA DE LA PÁGINA
+================================ */
+
+.header {
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfe4e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.header h1 {
+    margin: 0;
+    color: #17395c;
+    font-size: 26px;
+}
+
+.header p {
+    margin: 3px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.usuario-sesion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #17395c;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.usuario-sesion span:first-child {
+    color: #2f80c9;
+}
+
+
+/* Layout principal */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+
+/* Barra lateral */
+
+.sidebar {
+    width: 230px;
+    background-color: #17395c;
+    padding: 30px 16px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 13px 16px;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background-color: #24527d;
+}
+
+.sidebar a.activo {
+    background-color: #2f80c9;
+    font-weight: 600;
+}
+
+
+/* Contenido */
+
+.contenido {
+    flex: 1;
+    padding: 40px 60px;
+    box-sizing: border-box;
+    background-color: #f3f5f7;
+}
+
+.seccion {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #dfe4e8;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.seccion h2 {
+    margin-top: 0;
+    color: #17395c;
+}
+/* ================================
+   RESPONSIVE FORMULARIO
+================================ */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+    }
+
+    .contenido {
+        padding: 20px;
+    }
+}
+    .formulario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-completo {
+        grid-column: auto;
+    }
+
+    .acciones-formulario {
+        flex-direction: column;
+    }
+
+    .boton-principal,
+    .boton-secundario {
+        width: 100%;
+}

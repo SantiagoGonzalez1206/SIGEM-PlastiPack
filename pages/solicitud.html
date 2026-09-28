@@ -10,33 +10,75 @@
 
 <body>
 
-    <header class="header">
-        <div>
+    <header class="encabezado">
+
+        <div class="logo">
+
             <h1>SIGEM</h1>
-            <p>Gestión de mantenimiento</p>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
         </div>
 
         <div class="usuario-sesion">
+
             <span>●</span>
-            <span id="usuarioSesion">Operario</span>
+
+            <span id="usuarioSesion">Operario de producción</span>
+
         </div>
+
     </header>
 
 
     <div class="layout">
 
-        <aside class="sidebar">
+        <aside class="menu">
 
             <nav>
-                <a href="operario.html">Inicio</a>
-                <a href="solicitud.html" class="activo">Nueva solicitud</a>
-                <a href="reportes-operario.html">Mis reportes</a>
+
+                <a href="operario.html">
+
+                    <span class="menu-icono">
+                        ⌂
+                    </span>
+
+                    Inicio
+
+                </a>
+
+
+                <a href="solicitud.html" class="menu-activo">
+
+                    <span class="menu-icono">
+                        ＋
+                    </span>
+
+                    Nueva solicitud
+
+                </a>
+
+
+                <a href="#">
+
+                    <span class="menu-icono">
+                        ☷
+                    </span>
+
+                    Mis reportes
+
+                </a>
+
             </nav>
 
         </aside>
 
 
         <main class="contenido">
+
+            <!-- AQUÍ VA NUESTRO FORMULARIO -->
 
             <section class="seccion">
 
@@ -45,7 +87,6 @@
                 <p>
                     Registra una solicitud de mantenimiento para una máquina.
                 </p>
-
 
                 <form id="formularioSolicitud">
 
@@ -139,11 +180,17 @@
 
                     <div class="acciones-formulario">
 
-                        <button type="submit" class="boton-principal">
+                        <button
+                            type="submit"
+                            class="boton-principal"
+                        >
                             Registrar solicitud
                         </button>
 
-                        <a href="operario.html" class="boton-secundario">
+                        <a
+                            href="operario.html"
+                            class="boton-secundario"
+                        >
                             Cancelar
                         </a>
 
