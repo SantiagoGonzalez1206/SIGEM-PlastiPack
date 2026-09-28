@@ -6,27 +6,27 @@ const authRoutes = require("./routes/auth.routes");
 const maquinasRoutes = require("./routes/maquinas.routes");
 const solicitudesRoutes = require("./routes/solicitudes.routes");
 
-const app = express();
+const conexion = require("./config/database");
 
+const app = express();
 const PORT = 3000;
 
-
-// Middlewares
-
 app.use(cors());
-
 app.use(express.json());
-
-
-// Rutas
 
 app.use("/api", apiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/maquinas", maquinasRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
-
-// Servidor
+conexion.getConnection()
+    .then(function(connection) {
+        console.log("Conexión con MySQL establecida correctamente.");
+        connection.release();
+    })
+    .catch(function(error) {
+        console.error("Error al conectar con MySQL:", error.message);
+    });
 
 app.listen(PORT, function() {
     console.log(`Servidor SIGEM ejecutándose en http://localhost:${PORT}`);

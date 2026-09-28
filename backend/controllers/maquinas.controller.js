@@ -1,60 +1,57 @@
-const maquinas = [
-    {
-        id: 1,
-        codigo: "M001",
-        nombre: "Inyectora 01",
-        ubicacion: "Producción",
-        criticidad: "Alta",
-        estado: "Operativo"
-    },
-    {
-        id: 2,
-        codigo: "M002",
-        nombre: "Empacadora 01",
-        ubicacion: "Empaque",
-        criticidad: "Media",
-        estado: "Operativo"
-    },
-    {
-        id: 3,
-        codigo: "M003",
-        nombre: "Compresor 01",
-        ubicacion: "Mantenimiento",
-        criticidad: "Alta",
-        estado: "Operativo"
+const {
+    obtenerMaquinas,
+    obtenerMaquinaPorCodigo
+} = require("../models/maquina.model");
+
+
+async function listarMaquinas(req, res) {
+
+    try {
+
+        const maquinas = await obtenerMaquinas();
+
+        res.json(maquinas);
+
+    } catch (error) {
+
+        console.error("Error al obtener máquinas:", error);
+
+        res.status(500).json({
+            mensaje: "Error al consultar las máquinas."
+        });
     }
-];
-
-
-function obtenerMaquinas(req, res) {
-
-    res.json(maquinas);
-
 }
 
 
-function obtenerMaquinaPorCodigo(req, res) {
+async function buscarMaquinaPorCodigo(req, res) {
 
-    const codigo = req.params.codigo;
+    try {
 
-    const maquina = maquinas.find(function(maquinaActual) {
-        return maquinaActual.codigo === codigo;
-    });
+        const codigo = req.params.codigo;
 
-    if (!maquina) {
+        const maquina = await obtenerMaquinaPorCodigo(codigo);
 
-        return res.status(404).json({
-            mensaje: "La máquina no existe."
+        if (!maquina) {
+
+            return res.status(404).json({
+                mensaje: "La máquina no existe."
+            });
+        }
+
+        res.json(maquina);
+
+    } catch (error) {
+
+        console.error("Error al buscar máquina:", error);
+
+        res.status(500).json({
+            mensaje: "Error al consultar la máquina."
         });
-
     }
-
-    res.json(maquina);
-
 }
 
 
 module.exports = {
-    obtenerMaquinas,
-    obtenerMaquinaPorCodigo
+    listarMaquinas,
+    buscarMaquinaPorCodigo
 };

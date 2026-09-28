@@ -3,14 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    obtenerMaquinas,
-    obtenerMaquinaPorCodigo
+    listarMaquinas,
+    buscarMaquinaPorCodigo
 } = require("../controllers/maquinas.controller");
 
 
-router.get("/", obtenerMaquinas);
+router.get("/", listarMaquinas);
 
-router.get("/:codigo", obtenerMaquinaPorCodigo);
+router.get("/:codigo", buscarMaquinaPorCodigo);
 
 
 module.exports = router;
