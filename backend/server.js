@@ -5,6 +5,7 @@ const apiRoutes = require("./routes/api.routes");
 const authRoutes = require("./routes/auth.routes");
 const maquinasRoutes = require("./routes/maquinas.routes");
 const solicitudesRoutes = require("./routes/solicitudes.routes");
+const jefeRoutes = require("./routes/jefe.routes");
 
 const conexion = require("./config/database");
 
@@ -18,6 +19,7 @@ app.use("/api", apiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/maquinas", maquinasRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
+app.use("/api/jefe", jefeRoutes);
 
 conexion.getConnection()
     .then(function(connection) {

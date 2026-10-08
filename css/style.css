@@ -911,3 +911,210 @@ body {
     background-color: #e8f5e9;
     color: #26733b;
 }
+
+
+/* ================================
+   DASHBOARD JEFE
+   ================================ */
+
+.resumen-secundario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.tarjeta-secundaria {
+    background-color: #f7f8fa;
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tarjeta-secundaria strong {
+    font-size: 28px;
+    color: #111111;
+}
+
+.tarjeta-secundaria span {
+    color: #68717c;
+    font-size: 14px;
+}
+
+
+/* Alertas */
+
+.alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.alerta {
+    border: 1px solid #e0e4e8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #ffffff;
+}
+
+.alerta strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #111111;
+}
+
+.alerta p {
+    margin: 0;
+    color: #68717c;
+    font-size: 14px;
+}
+
+.alerta > span {
+    font-size: 13px;
+    color: #68717c;
+    white-space: nowrap;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .resumen-secundario {
+        grid-template-columns: 1fr;
+    }
+
+    .alerta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .alerta > span {
+        white-space: normal;
+    }
+
+
+}
+
+/* ================================
+   TARJETAS RESUMEN - JEFE
+   ================================ */
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.tarjeta-resumen {
+    background-color: white;
+    border: 1px solid #e0e4e8;
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.icono-resumen {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background-color: #eaf3fc;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    flex-shrink: 0;
+}
+
+.tarjeta-resumen h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #222;
+}
+
+.tarjeta-resumen strong {
+    display: block;
+    font-size: 34px;
+    line-height: 1;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.tarjeta-resumen p {
+    margin: 0;
+    color: #68717c;
+    font-size: 14px;
+}
+
+
+/* ================================
+   ACCIONES RÁPIDAS - JEFE
+   ================================ */
+
+.acciones-rapidas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.accion-rapida {
+    text-decoration: none;
+    color: #111;
+    border: 1px solid #e0e4e8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background-color: white;
+    transition: background-color 0.2s ease;
+}
+
+.accion-rapida:hover {
+    background-color: #f7f9fb;
+}
+
+.icono-accion {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #eaf3fc;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.accion-rapida > span:not(.flecha) {
+    font-weight: 600;
+    flex: 1;
+}
+
+.flecha {
+    font-size: 22px;
+    color: #222;
+}
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 700px) {
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+}

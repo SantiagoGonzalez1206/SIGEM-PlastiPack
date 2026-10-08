@@ -62,6 +62,11 @@ if (formularioLogin) {
                 window.location.href = "pages/operario.html";
 
             }
+            if (datos.rol === "jefe") {
+
+                window.location.href = "pages/jefe.html";
+                
+            }
 
         } catch (error) {
 

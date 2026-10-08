@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEM - Jefe de mantenimiento</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="jefe.html" class="menu-activo">
+                <span class="menu-icono">⌂</span>
+                Inicio
+            </a>
+
+            <a href="#">
+                <span class="menu-icono">☷</span>
+                Órdenes
+            </a>
+
+            <a href="#">
+                <span class="menu-icono">↔</span>
+                Asignaciones
+            </a>
+
+            <a href="#">
+                <span class="menu-icono">◷</span>
+                Preventivos
+            </a>
+
+            <a href="#" id="cerrarSesion">
+                <span class="menu-icono">↪</span>
+                Cerrar sesión
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="contenido">
+
+        <h1>Inicio</h1>
+
+
+        <section class="resumen">
+
+            <div class="tarjeta-resumen">
+
+                <div class="icono-resumen">
+                    ☷
+                </div>
+
+                <div>
+                    <h3>OT pendientes</h3>
+
+                    <strong id="otPendientes">8</strong>
+
+                    <p>
+                        <span id="otUrgentes">3</span> urgentes
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta-resumen">
+
+                <div class="icono-resumen">
+                    ◷
+                </div>
+
+                <div>
+                    <h3>En ejecución</h3>
+
+                    <strong id="otEnEjecucion">5</strong>
+
+                    <p>Órdenes activas</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="seccion">
+
+            <h2>Gestión principal</h2>
+
+            <div class="acciones-rapidas">
+
+                <a href="#" class="accion-rapida">
+
+                    <div class="icono-accion">
+                        ☷
+                    </div>
+
+                    <span>Supervisar órdenes de trabajo</span>
+
+                    <span class="flecha">→</span>
+
+                </a>
+
+
+                <a href="#" class="accion-rapida">
+
+                    <div class="icono-accion">
+                        ↔
+                    </div>
+
+                    <span>Asignar técnicos y recursos</span>
+
+                    <span class="flecha">→</span>
+
+                </a>
+
+
+                <a href="#" class="accion-rapida">
+
+                    <div class="icono-accion">
+                        ◷
+                    </div>
+
+                    <span>Gestionar mantenimientos preventivos</span>
+
+                    <span class="flecha">→</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="seccion">
+
+            <div class="resumen-secundario">
+
+                <div class="tarjeta-secundaria">
+
+                    <strong id="otActivas">8</strong>
+
+                    <span>Activas</span>
+
+                </div>
+
+
+                <div class="tarjeta-secundaria">
+
+                    <strong id="preventivosProgramados">7</strong>
+
+                    <span>Preventivos programados</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="seccion">
+
+            <h2>Alertas</h2>
+
+            <div class="alertas">
+
+                <div class="alerta">
+
+                    <div>
+                        <strong>Preventivo próximo</strong>
+
+                        <p>Sopladora 01</p>
+                    </div>
+
+                    <span>Vence en 2 días</span>
+
+                </div>
+
+
+                <div class="alerta">
+
+                    <div>
+                        <strong>OT urgente</strong>
+
+                        <p>OT-211 · Motor línea 2</p>
+                    </div>
+
+                    <span>Alta prioridad</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/dashboard-jefe.js"></script>
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+</html>
