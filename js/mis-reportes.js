@@ -57,11 +57,13 @@ async function cargarSolicitudes() {
 
                     <tr>
                         <th>Solicitud</th>
+                        <th>Fecha</th>
                         <th>Máquina</th>
                         <th>Tipo</th>
+                        <th>Descripción</th>
                         <th>Prioridad</th>
                         <th>Estado</th>
-                        <th>Orden de trabajo</th>
+                        <th>OT</th>
                     </tr>
 
                 </thead>
@@ -72,38 +74,72 @@ async function cargarSolicitudes() {
 
         solicitudes.forEach(function(solicitud) {
 
-            html += `
-                <tr>
+    const fecha = new Date(solicitud.fecha_hora);
 
-                    <td>#${solicitud.id_solicitud}</td>
+    const fechaFormateada = fecha.toLocaleDateString("es-CO");
+    const horaFormateada = fecha.toLocaleTimeString("es-CO", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
 
-                    <td>
-                        ${solicitud.codigoMaquina}
-                        - ${solicitud.nombreMaquina}
-                    </td>
+    const estadoClase = solicitud.estado
+        .toLowerCase()
+        .replaceAll(" ", "-");
 
-                    <td>
-                        ${solicitud.tipo_mantenimiento}
-                    </td>
+    const prioridadClase = solicitud.prioridad
+        .toLowerCase();
 
-                    <td>
-                        ${solicitud.prioridad}
-                    </td>
+    html += `
+        <tr>
 
-                    <td>
-                        ${solicitud.estado}
-                    </td>
+            <td>#${solicitud.id_solicitud}</td>
 
-                    <td>
-                        ${solicitud.numeroOrden
-                            ? solicitud.numeroOrden
-                            : "Pendiente"}
-                    </td>
+            <td>
+                ${fechaFormateada}<br>
+                <span class="hora-reporte">
+                    ${horaFormateada}
+                </span>
+            </td>
 
-                </tr>
-            `;
+            <td>
+                <strong>${solicitud.codigoMaquina}</strong><br>
+                <span class="texto-secundario">
+                    ${solicitud.nombreMaquina}
+                </span>
+            </td>
 
-        });
+            <td>
+                ${solicitud.tipo_mantenimiento}
+            </td>
+
+            <td class="descripcion-reporte">
+                ${solicitud.descripcion_falla}
+            </td>
+
+            <td>
+                <span class="etiqueta-prioridad ${prioridadClase}">
+                    ${solicitud.prioridad}
+                </span>
+            </td>
+
+            <td>
+                <span class="etiqueta-estado ${estadoClase}">
+                    ${solicitud.estado}
+                </span>
+            </td>
+
+            <td>
+                ${
+                    solicitud.numeroOrden
+                        ? `OT-${solicitud.numeroOrden}`
+                        : "Pendiente"
+                }
+            </td>
+
+        </tr>
+    `;
+
+});
 
 
         html += `

@@ -7,6 +7,7 @@
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f3f5f7;
@@ -156,17 +157,26 @@ body {
    ===================================================== */
 
 .encabezado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 76px;
     background-color: white;
-
-    border-bottom: 1px solid #ddd;
-
-    padding: 18px 30px;
-
+    border-bottom: 1px solid #dfe3e8;
     display: flex;
-
-    justify-content: space-between;
-
     align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
 }
 
 .logo h1 {
@@ -211,15 +221,16 @@ body {
 
 .menu {
     position: fixed;
-    top: 87px;
+    top: 76px;
     left: 0;
     bottom: 0;
     width: 222px;
     background-color: #17395c;
     padding: 28px 13px;
     box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 999;
 }
-
 .menu nav {
     display: flex;
     flex-direction: column;
@@ -257,9 +268,10 @@ body {
    ===================================================== */
 
 .contenido {
-    margin-left: 222px;
-    padding: 40px 60px;
-    min-height: calc(100vh - 54px);
+    margin-left: 200px !important;
+    padding-top: 100px !important;
+    padding: 140px 60px 40px 60px;
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
@@ -375,14 +387,14 @@ body {
 
 .seccion {
     background-color: white;
-
     border: 1px solid #e0e4e8;
-
     border-radius: 10px;
-
     padding: 28px;
+    margin-bottom: 0;
+}
 
-    margin-bottom: 28px;
+.seccion + .seccion {
+    margin-top: 28px;
 }
 
 .seccion h3 {
@@ -840,4 +852,62 @@ body {
 
 .tabla-solicitudes tr:hover {
     background-color: #f8fafc;
+}
+
+.descripcion-reporte {
+    max-width: 280px;
+    line-height: 1.4;
+}
+
+.hora-reporte {
+    font-size: 12px;
+    color: #7b8794;
+}
+
+.texto-secundario {
+    font-size: 13px;
+    color: #7b8794;
+}
+
+.etiqueta-prioridad,
+.etiqueta-estado {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Prioridades */
+
+.etiqueta-prioridad.alta {
+    background-color: #fde8e8;
+    color: #b42318;
+}
+
+.etiqueta-prioridad.media {
+    background-color: #fff4d6;
+    color: #8a6100;
+}
+
+.etiqueta-prioridad.baja {
+    background-color: #e8f5e9;
+    color: #26733b;
+}
+
+/* Estados */
+
+.etiqueta-estado.abierta {
+    background-color: #e8f1fb;
+    color: #245b8f;
+}
+
+.etiqueta-estado.en-proceso {
+    background-color: #fff4d6;
+    color: #8a6100;
+}
+
+.etiqueta-estado.atendida {
+    background-color: #e8f5e9;
+    color: #26733b;
 }
