@@ -3,14 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    crearSolicitud,
-    obtenerSolicitudes
+    registrarSolicitud,
+    listarSolicitudes
 } = require("../controllers/solicitudes.controller");
 
 
-router.post("/", crearSolicitud);
+router.post("/", registrarSolicitud);
 
-router.get("/", obtenerSolicitudes);
+router.get("/", listarSolicitudes);
 
 
 module.exports = router;

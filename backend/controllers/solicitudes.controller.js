@@ -1,131 +1,89 @@
-const solicitudes = [];
-
-const maquinas = [
-    {
-        id: 1,
-        codigo: "M001",
-        nombre: "Inyectora 01",
-        ubicacion: "Producción",
-        criticidad: "Alta",
-        estado: "Operativo"
-    },
-    {
-        id: 2,
-        codigo: "M002",
-        nombre: "Empacadora 01",
-        ubicacion: "Empaque",
-        criticidad: "Media",
-        estado: "Operativo"
-    },
-    {
-        id: 3,
-        codigo: "M003",
-        nombre: "Compresor 01",
-        ubicacion: "Mantenimiento",
-        criticidad: "Alta",
-        estado: "Operativo"
-    }
-];
+const {
+    obtenerSolicitudes,
+    crearSolicitud
+} = require("../models/solicitud.model");
 
 
-function crearSolicitud(req, res) {
+async function registrarSolicitud(req, res) {
 
-    const {
-        codigoMaquina,
-        tipoMantenimiento,
-        descripcionFalla,
-        prioridad,
-        usuario
-    } = req.body;
+    try {
+
+        const {
+            codigoMaquina,
+            tipoMantenimiento,
+            descripcionFalla,
+            prioridad,
+            usuario
+        } = req.body;
 
 
-    // Validar datos obligatorios
+        if (
+            !codigoMaquina ||
+            !tipoMantenimiento ||
+            !descripcionFalla ||
+            !prioridad ||
+            !usuario
+        ) {
 
-    if (
-        !codigoMaquina ||
-        !tipoMantenimiento ||
-        !descripcionFalla ||
-        !prioridad ||
-        !usuario
-    ) {
+            return res.status(400).json({
+                mensaje: "Todos los campos son obligatorios."
+            });
+        }
 
-        return res.status(400).json({
-            mensaje: "Todos los campos son obligatorios."
+
+        const idSolicitud = await crearSolicitud(
+            tipoMantenimiento,
+            descripcionFalla,
+            prioridad,
+            usuario,
+            codigoMaquina
+        );
+
+
+        if (!idSolicitud) {
+
+            return res.status(404).json({
+                mensaje: "El usuario o la máquina no existen."
+            });
+        }
+
+
+        res.status(201).json({
+            mensaje: "Solicitud registrada correctamente.",
+            idSolicitud: idSolicitud
         });
 
-    }
+    } catch (error) {
 
+        console.error("Error al registrar solicitud:", error);
 
-    // Buscar máquina
-
-    const maquina = maquinas.find(function(maquinaActual) {
-
-        return maquinaActual.codigo === codigoMaquina;
-
-    });
-
-
-    if (!maquina) {
-
-        return res.status(404).json({
-            mensaje: "La máquina no existe."
+        res.status(500).json({
+            mensaje: "Error al registrar la solicitud."
         });
-
     }
-
-
-    // Crear solicitud
-
-    const nuevaSolicitud = {
-
-        id: solicitudes.length + 1,
-
-        codigoMaquina: maquina.codigo,
-
-        nombreMaquina: maquina.nombre,
-
-        ubicacion: maquina.ubicacion,
-
-        tipoMantenimiento,
-
-        descripcionFalla,
-
-        prioridad,
-
-        usuario,
-
-        fechaHora: new Date().toISOString(),
-
-        estado: "Abierta"
-
-    };
-
-
-    solicitudes.push(nuevaSolicitud);
-
-
-    res.status(201).json({
-
-        mensaje: "Solicitud registrada correctamente.",
-
-        solicitud: nuevaSolicitud
-
-    });
-
 }
 
 
-function obtenerSolicitudes(req, res) {
+async function listarSolicitudes(req, res) {
 
-    res.json(solicitudes);
+    try {
 
+        const solicitudes = await obtenerSolicitudes();
+
+        res.json(solicitudes);
+
+    } catch (error) {
+
+        console.error("Error al obtener solicitudes:", error);
+
+        res.status(500).json({
+            mensaje: "Error al consultar las solicitudes."
+        });
+    }
 }
 
 
 module.exports = {
-
-    crearSolicitud,
-
-    obtenerSolicitudes
-
+    registrarSolicitud,
+    listarSolicitudes
 };
