@@ -25,6 +25,34 @@ async function obtenerSolicitudes() {
     return filas;
 }
 
+async function obtenerSolicitudesPorUsuario(usuario) {
+
+    const [filas] = await conexion.query(`
+        SELECT
+            s.id_solicitud,
+            s.tipo_mantenimiento,
+            s.descripcion_falla,
+            s.prioridad,
+            s.fecha_hora,
+            s.estado,
+            m.codigo AS codigoMaquina,
+            m.nombre AS nombreMaquina,
+            m.ubicacion,
+            o.numero_consecutivo AS numeroOrden
+        FROM solicitud s
+        INNER JOIN usuario u
+            ON s.id_usuario = u.id_usuario
+        INNER JOIN maquina m
+            ON s.id_maquina = m.id_maquina
+        LEFT JOIN orden_de_trabajo o
+            ON s.id_solicitud = o.id_solicitud
+        WHERE u.usuario_institucional = ?
+        ORDER BY s.fecha_hora DESC
+    `, [usuario]);
+
+    return filas;
+}
+
 
 async function crearSolicitud(
     tipoMantenimiento,
@@ -149,5 +177,6 @@ async function crearSolicitud(
 
 module.exports = {
     obtenerSolicitudes,
+    obtenerSolicitudesPorUsuario,
     crearSolicitud
 };

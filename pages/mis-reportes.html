@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis reportes - SIGEM</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+
+            <h1>SIGEM</h1>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
+        </div>
+
+        <div class="usuario-sesion">
+
+            <span>●</span>
+
+            <span id="usuarioSesion">Operario de producción</span>
+
+        </div>
+
+    </header>
+
+
+    <aside class="menu">
+
+            <nav>
+
+                <a href="operario.html" >
+
+                    <span class="menu-icono">
+                        ⌂
+                    </span>
+
+                    Inicio
+
+                </a>
+
+
+                <a href="solicitud.html">
+
+                    <span class="menu-icono">
+                        ＋
+                    </span>
+
+                    Nueva solicitud
+
+                </a>
+
+
+                <a href="mis-reportes.html" class="menu-activo">
+
+                    <span class="menu-icono">
+                        ☷
+                    </span>
+
+                    Mis reportes
+
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+    <main class="contenido">
+
+        <div class="encabezado-pagina">
+
+            <div>
+                <h1>Mis reportes</h1>
+
+                <p>
+                    Consulta las solicitudes de mantenimiento que has registrado.
+                </p>
+            </div>
+
+        </div>
+
+
+        <section class="seccion">
+
+            <div class="titulo-seccion">
+                <h2>Solicitudes registradas</h2>
+            </div>
+
+            <div id="listaSolicitudes" class="tabla-contenedor">
+
+                <p>Cargando solicitudes...</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/mis-reportes.js"></script>
+
+</body>
+
+</html>

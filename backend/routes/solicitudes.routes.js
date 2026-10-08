@@ -4,13 +4,15 @@ const router = express.Router();
 
 const {
     registrarSolicitud,
-    listarSolicitudes
+    listarSolicitudes,
+    listarSolicitudesPorUsuario
 } = require("../controllers/solicitudes.controller");
-
 
 router.post("/", registrarSolicitud);
 
 router.get("/", listarSolicitudes);
+
+router.get("/usuario/:usuario", listarSolicitudesPorUsuario);
 
 
 module.exports = router;

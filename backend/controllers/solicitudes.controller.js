@@ -1,8 +1,8 @@
 const {
     obtenerSolicitudes,
+    obtenerSolicitudesPorUsuario,
     crearSolicitud
 } = require("../models/solicitud.model");
-
 
 async function registrarSolicitud(req, res) {
 
@@ -82,8 +82,32 @@ async function listarSolicitudes(req, res) {
     }
 }
 
+async function listarSolicitudesPorUsuario(req, res) {
+
+    try {
+
+        const usuario = req.params.usuario;
+
+        const solicitudes =
+            await obtenerSolicitudesPorUsuario(usuario);
+
+        res.json(solicitudes);
+
+    } catch (error) {
+
+        console.error(
+            "Error al obtener solicitudes del usuario:",
+            error
+        );
+
+        res.status(500).json({
+            mensaje: "Error al consultar las solicitudes."
+        });
+    }
+}
 
 module.exports = {
     registrarSolicitud,
-    listarSolicitudes
+    listarSolicitudes,
+    listarSolicitudesPorUsuario
 };

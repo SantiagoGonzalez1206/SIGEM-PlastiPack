@@ -210,75 +210,57 @@ body {
    ===================================================== */
 
 .menu {
-    width: 220px;
-
-    min-width: 220px;
-
+    position: fixed;
+    top: 87px;
+    left: 0;
+    bottom: 0;
+    width: 222px;
     background-color: #17395c;
-
-    padding: 25px 16px;
+    padding: 28px 13px;
+    box-sizing: border-box;
 }
 
 .menu nav {
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
 .menu a {
-    display: block;
-
-    text-decoration: none;
-
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
     color: white;
-
-    padding: 12px 15px;
-
-    border-radius: 6px;
-
-    font-size: 14px;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: 500;
 }
 
 .menu a:hover {
-    background-color: #24517d;
+    background-color: #24527e;
 }
 
-.menu .menu-activo {
+.menu-activo {
     background-color: #2f80c9;
-
-    color: white;
-
-    font-weight: bold;
+    font-weight: 600 !important;
 }
-
-
-/* Iconos del menú */
 
 .menu-icono {
-    display: inline-block;
-
-    width: 25px;
-
-    font-size: 18px;
+    width: 16px;
+    text-align: center;
+    font-size: 17px;
 }
-
 
 /* =====================================================
    CONTENIDO
    ===================================================== */
 
 .contenido {
-    flex: 1;
-
-    width: 100%;
-
-    max-width: 1400px;
-
-    margin: 0 auto;
-
+    margin-left: 222px;
     padding: 40px 60px;
+    min-height: calc(100vh - 54px);
+    box-sizing: border-box;
 }
 
 
@@ -820,4 +802,42 @@ body {
     .boton-principal,
     .boton-secundario {
         width: 100%;
+}
+
+
+
+/* =====================================================
+   REPORTES
+   ===================================================== */
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-solicitudes {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.tabla-solicitudes th,
+.tabla-solicitudes td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla-solicitudes th {
+    background-color: #f5f7fa;
+    color: #17395c;
+    font-weight: 600;
+}
+
+.tabla-solicitudes td {
+    color: #4b5563;
+}
+
+.tabla-solicitudes tr:hover {
+    background-color: #f8fafc;
 }
