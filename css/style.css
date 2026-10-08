@@ -1118,3 +1118,17 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.tabla-solicitudes th,
+.tabla-solicitudes td {
+    white-space: nowrap;
+}
+
+.tabla-solicitudes td {
+    vertical-align: middle;
+}
+
+.tabla-solicitudes .texto-secundario {
+    display: block;
+    margin-top: 4px;
+}

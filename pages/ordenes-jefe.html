@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEM - Órdenes</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="jefe.html">
+                <span class="menu-icono">⌂</span>
+                Inicio
+            </a>
+
+            <a href="ordenes-jefe.html" class="menu-activo">
+                <span class="menu-icono">☷</span>
+                Órdenes
+            </a>
+
+             <a href="asignaciones-jefe.html">
+                <span class="menu-icono">↔</span>
+                Asignaciones
+            </a>
+
+
+            <a href="#">
+                <span class="menu-icono">◷</span>
+                Preventivos
+            </a>
+
+            <a href="#" id="cerrarSesion">
+                <span class="menu-icono">↪</span>
+                Cerrar sesión
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="contenido">
+
+        <h1>Órdenes</h1>
+
+        <p class="subtitulo">
+            Supervisión de órdenes de trabajo
+        </p>
+
+
+        <section class="seccion">
+
+            <h2>Órdenes de trabajo</h2>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+                        <tr>
+                            <th>OT</th>
+                            <th>Origen</th>
+                            <th>Máquina</th>
+                            <th>Prioridad</th>
+                            <th>Técnico</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaOrdenes">
+                        <tr>
+                            <td colspan="6">
+                                Cargando órdenes...
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/dashboard-jefe.js"></script>
+    <script src="../js/ordenes-jefe.js"></script>
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEM - Asignaciones</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="jefe.html">
+                <span class="menu-icono">⌂</span>
+                Inicio
+            </a>
+
+            <a href="ordenes-jefe.html">
+                <span class="menu-icono">☷</span>
+                Órdenes
+            </a>
+
+            <a href="asignaciones-jefe.html" class="menu-activo">
+                <span class="menu-icono">↔</span>
+                Asignaciones
+            </a>
+
+            <a href="#">
+                <span class="menu-icono">◷</span>
+                Preventivos
+            </a>
+
+            <a href="#" id="cerrarSesion">
+                <span class="menu-icono">↪</span>
+                Cerrar sesión
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="contenido">
+
+        <h1>Asignaciones</h1>
+
+        <p class="subtitulo">
+            Asignación de técnicos responsables
+        </p>
+
+
+        <section class="seccion">
+
+            <h2>Asignar técnico</h2>
+
+            <form id="formularioAsignacion">
+
+                <div class="formulario-grid">
+
+                    <div class="campo">
+
+                        <label for="orden">
+                            Orden de trabajo
+                        </label>
+
+                        <select id="orden" required>
+
+                            <option value="">
+                                Selecciona una orden
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="tecnico">
+                            Técnico responsable
+                        </label>
+
+                        <select id="tecnico" required>
+
+                            <option value="">
+                                Selecciona un técnico
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="acciones-formulario">
+
+                    <button
+                        type="submit"
+                        class="boton-principal">
+                        Asignar técnico
+                    </button>
+
+                </div>
+
+                <p id="mensajeAsignacion"></p>
+
+            </form>
+
+        </section>
+
+
+        <section class="seccion">
+
+            <h2>Órdenes asignadas</h2>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+
+                        <tr>
+                            <th>OT</th>
+                            <th>Máquina</th>
+                            <th>Prioridad</th>
+                            <th>Técnico</th>
+                            <th>Estado</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listaAsignaciones">
+
+                        <tr>
+                            <td colspan="5">
+                                Cargando asignaciones...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/dashboard-jefe.js"></script>
+    <script src="../js/asignaciones-jefe.js"></script>
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+</html>
