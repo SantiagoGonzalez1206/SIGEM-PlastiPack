@@ -1,5 +1,6 @@
 const {
-    obtenerResumenJefe
+    obtenerResumenJefe,
+    obtenerAlertasJefe
 } = require("../models/jefe.model");
 
 async function obtenerResumen(req, res) {
@@ -23,6 +24,21 @@ async function obtenerResumen(req, res) {
     }
 }
 
+async function obtenerAlertas(req, res) {
+    try {
+        const alertas = await obtenerAlertasJefe();
+
+        res.json(alertas);
+    } catch (error) {
+        console.error("Error al obtener alertas del jefe:", error);
+
+        res.status(500).json({
+            mensaje: "Error al consultar las alertas."
+        });
+    }
+}
+
 module.exports = {
-    obtenerResumen
+    obtenerResumen,
+    obtenerAlertas
 };

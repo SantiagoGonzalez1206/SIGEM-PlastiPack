@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIGEM - Preventivos</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="jefe.html">
+                <span class="menu-icono">⌂</span>
+                Inicio
+            </a>
+
+            <a href="ordenes-jefe.html">
+                <span class="menu-icono">☷</span>
+                Órdenes
+            </a>
+
+            <a href="asignaciones-jefe.html">
+                <span class="menu-icono">↔</span>
+                Asignaciones
+            </a>
+
+            <a href="preventivos-jefe.html" class="menu-activo">
+                <span class="menu-icono">◷</span>
+                Preventivos
+            </a>
+
+            <a href="#" id="cerrarSesion">
+                <span class="menu-icono">↪</span>
+                Cerrar sesión
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="contenido">
+
+        <h1>Preventivos</h1>
+
+        <p class="subtitulo">
+            Programación de mantenimientos preventivos
+        </p>
+
+
+        <section class="seccion">
+
+            <h2>Programar mantenimiento</h2>
+
+            <form id="formularioPreventivo">
+
+                <div class="formulario-grid">
+
+                    <div class="campo">
+
+                        <label for="maquina">
+                            Máquina
+                        </label>
+
+                        <select id="maquina" required>
+
+                            <option value="">
+                                Selecciona una máquina
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="frecuencia">
+                            Frecuencia
+                        </label>
+
+                        <select id="frecuencia" required>
+
+                            <option value="">
+                                Selecciona una frecuencia
+                            </option>
+
+                            <option value="Mensual">
+                                Mensual
+                            </option>
+
+                            <option value="Trimestral">
+                                Trimestral
+                            </option>
+
+                            <option value="Semestral">
+                                Semestral
+                            </option>
+
+                            <option value="Anual">
+                                Anual
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo campo-completo">
+
+                        <label for="actividad">
+                            Actividad
+                        </label>
+
+                        <textarea
+                            id="actividad"
+                            rows="4"
+                            placeholder="Describe el mantenimiento que se realizará"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="proximaFecha">
+                            Próxima fecha
+                        </label>
+
+                        <input
+                            type="date"
+                            id="proximaFecha"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="acciones-formulario">
+
+                    <button
+                        type="submit"
+                        class="boton-principal"
+                    >
+                        Programar mantenimiento
+                    </button>
+
+                </div>
+
+
+                <p id="mensajePreventivo"></p>
+
+            </form>
+
+        </section>
+
+
+        <section class="seccion">
+
+            <h2>Mantenimientos programados</h2>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+
+                        <tr>
+                            <th>Máquina</th>
+                            <th>Actividad</th>
+                            <th>Frecuencia</th>
+                            <th>Próxima fecha</th>
+                            <th>Estado</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listaPreventivos">
+
+                        <tr>
+                            <td colspan="5">
+                                Cargando mantenimientos...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/dashboard-jefe.js"></script>
+    <script src="../js/preventivos-jefe.js"></script>
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+
+</html>

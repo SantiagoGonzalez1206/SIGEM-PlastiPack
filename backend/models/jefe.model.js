@@ -38,6 +38,49 @@ async function obtenerResumenJefe() {
     };
 }
 
+async function obtenerAlertasJefe() {
+
+    const [preventivos] = await conexion.query(`
+        SELECT
+            p.id_preventivo,
+            p.proxima_fecha,
+            m.codigo AS codigo_maquina,
+            m.nombre AS nombre_maquina
+        FROM mantenimiento_preventivo p
+        INNER JOIN maquina m
+            ON p.id_maquina = m.id_maquina
+        WHERE p.proxima_fecha >= CURDATE()
+        AND p.proxima_fecha <= DATE_ADD(CURDATE(), INTERVAL 7 DAY)
+        ORDER BY p.proxima_fecha ASC
+        LIMIT 1
+    `);
+
+    const [ordenes] = await conexion.query(`
+        SELECT
+            o.id_orden,
+            o.numero_consecutivo,
+            o.prioridad,
+            o.estado,
+            m.codigo AS codigo_maquina,
+            m.nombre AS nombre_maquina
+        FROM orden_de_trabajo o
+        INNER JOIN solicitud s
+            ON o.id_solicitud = s.id_solicitud
+        INNER JOIN maquina m
+            ON s.id_maquina = m.id_maquina
+        WHERE o.prioridad = 'Alta'
+        AND o.estado IN ('Pendiente', 'En proceso')
+        ORDER BY o.id_orden DESC
+        LIMIT 1
+    `);
+
+    return {
+        preventivo: preventivos[0] || null,
+        ordenUrgente: ordenes[0] || null
+    };
+}
+
 module.exports = {
-    obtenerResumenJefe
+    obtenerResumenJefe,
+    obtenerAlertasJefe
 };
