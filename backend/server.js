@@ -7,8 +7,8 @@ const maquinasRoutes = require("./routes/maquinas.routes");
 const solicitudesRoutes = require("./routes/solicitudes.routes");
 const jefeRoutes = require("./routes/jefe.routes");
 const ordenesJefeRoutes = require("./routes/ordenes-jefe.routes");
-const tecnicosRoutes = require("./routes/tecnicos.routes");
 const preventivosJefeRoutes = require("./routes/preventivos-jefe.routes");
+const tecnicoRoutes =require("./routes/tecnico.routes");
 
 const conexion = require("./config/database");
 
@@ -24,8 +24,9 @@ app.use("/api/maquinas", maquinasRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 app.use("/api/jefe", jefeRoutes);
 app.use("/api/jefe/ordenes", ordenesJefeRoutes);
-app.use("/api/tecnicos", tecnicosRoutes);
+app.use("/api/tecnicos", tecnicoRoutes);
 app.use("/api/jefe/preventivos",preventivosJefeRoutes);
+app.use("/api/tecnico",tecnicoRoutes);
 
 conexion.getConnection()
     .then(function(connection) {
