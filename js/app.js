@@ -7,77 +7,115 @@ if (formularioLogin) {
 
         evento.preventDefault();
 
-        const usuarioIngresado = document.getElementById("usuario").value.trim();
-        const passwordIngresado = document.getElementById("password").value;
+        const usuarioIngresado =
+            document.getElementById("usuario").value.trim();
 
-        // Validar campos vacíos
+        const passwordIngresado =
+            document.getElementById("password").value;
 
-        if (usuarioIngresado === "" || passwordIngresado === "") {
 
-            mensajeLogin.textContent = "Por favor, completa todos los campos.";
+        if (
+            usuarioIngresado === "" ||
+            passwordIngresado === ""
+        ) {
+
+            mensajeLogin.textContent =
+                "Por favor, completa todos los campos.";
+
             mensajeLogin.style.color = "red";
 
             return;
         }
 
+
         try {
 
-            const respuesta = await fetch("http://localhost:3000/api/auth/login", {
+            const respuesta = await fetch(
+                "http://localhost:3000/api/auth/login",
+                {
+                    method: "POST",
 
-                method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    body: JSON.stringify({
+                        usuario: usuarioIngresado,
+                        password: passwordIngresado
+                    })
+                }
+            );
 
-                body: JSON.stringify({
-                    usuario: usuarioIngresado,
-                    password: passwordIngresado
-                })
-
-            });
 
             const datos = await respuesta.json();
 
+
             if (!respuesta.ok) {
 
-                mensajeLogin.textContent = datos.mensaje;
-                mensajeLogin.style.color = "red";
+                mensajeLogin.textContent =
+                    datos.mensaje;
+
+                mensajeLogin.style.color =
+                    "red";
 
                 return;
             }
 
-            mensajeLogin.textContent = datos.mensaje;
-            mensajeLogin.style.color = "green";
 
-            // Guardar información básica de la sesión
+            mensajeLogin.textContent =
+                datos.mensaje;
 
-            localStorage.setItem("usuario", datos.usuario);
-            localStorage.setItem("rol", datos.rol);
+            mensajeLogin.style.color =
+                "green";
 
-            // Redireccionar según el rol
+
+            localStorage.setItem(
+                "usuario",
+                datos.usuario
+            );
+
+            localStorage.setItem(
+                "rol",
+                datos.rol
+            );
+
 
             if (datos.rol === "operario") {
 
-                window.location.href = "pages/operario.html";
+                window.location.href =
+                    "pages/operario.html";
 
-            }
-            if (datos.rol === "jefe") {
+            } else if (datos.rol === "jefe") {
 
-                window.location.href = "pages/jefe.html";
-                
-            }
-            if (datos.rol === "tecnico") {
-                window.location.href = "pages/tecnico.html";
+                window.location.href =
+                    "pages/jefe.html";
+
+            } else if (datos.rol === "tecnico") {
+
+                window.location.href =
+                    "pages/tecnico.html";
+
+            } else if (datos.rol === "gerente") {
+
+                window.location.href =
+                    "pages/gerente.html";
+
             }
 
         } catch (error) {
 
-            mensajeLogin.textContent = "No se pudo conectar con el servidor.";
-            mensajeLogin.style.color = "red";
+            mensajeLogin.textContent =
+                "No se pudo conectar con el servidor.";
 
-            console.error("Error de conexión:", error);
+            mensajeLogin.style.color =
+                "red";
+
+            console.error(
+                "Error de conexión:",
+                error
+            );
         }
 
     });
+
 }

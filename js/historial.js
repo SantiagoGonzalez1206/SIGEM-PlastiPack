@@ -43,6 +43,10 @@ const menuPrincipal =
     );
 
 
+/* ==========================================
+   MENÚ TÉCNICO
+========================================== */
+
 if (rol === "tecnico") {
 
     menuPrincipal.innerHTML = `
@@ -100,6 +104,10 @@ if (rol === "tecnico") {
 
 }
 
+
+/* ==========================================
+   MENÚ JEFE
+========================================== */
 
 if (rol === "jefe") {
 
@@ -181,6 +189,10 @@ if (rol === "jefe") {
 }
 
 
+/* ==========================================
+   MENÚ GERENTE
+========================================== */
+
 if (rol === "gerente") {
 
     menuPrincipal.innerHTML = `
@@ -196,14 +208,38 @@ if (rol === "gerente") {
         </a>
 
 
-        <a href="historial.html"
-           class="menu-activo">
+        <a
+            href="historial.html"
+            class="menu-activo"
+        >
 
             <span class="menu-icono">
                 ◫
             </span>
 
             Historial
+
+        </a>
+
+
+        <a href="reportes-gerente.html">
+
+            <span class="menu-icono">
+                ▤
+            </span>
+
+            Reportes
+
+        </a>
+
+
+        <a href="indicadores-gerente.html">
+
+            <span class="menu-icono">
+                ◈
+            </span>
+
+            Indicadores
 
         </a>
 
