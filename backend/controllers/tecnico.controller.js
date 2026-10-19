@@ -1,7 +1,6 @@
 const tecnicoModel = require("../models/tecnico.model");
 
 const {
-    obtenerTecnicos,
     obtenerOrdenesTecnico,
     obtenerOrdenTecnico,
     obtenerIntervencion,
@@ -16,52 +15,21 @@ const {
 
 
 // =====================================================
-// LISTAR TÉCNICOS
-// =====================================================
-
-async function listarTecnicos(req, res) {
-
-    try {
-
-        const tecnicos =
-            await obtenerTecnicos();
-
-        res.json(tecnicos);
-
-    } catch (error) {
-
-        console.error(
-            "Error al obtener técnicos:",
-            error
-        );
-
-        res.status(500).json({
-            mensaje:
-                "Error al consultar los técnicos."
-        });
-    }
-}
-
-
-// =====================================================
-// ÓRDENES DEL TÉCNICO
+// LISTAR ÓRDENES DEL TÉCNICO
 // =====================================================
 
 async function listarOrdenesTecnico(req, res) {
 
     try {
 
-        const usuario =
-            req.query.usuario;
+        const usuario = req.query.usuario;
 
         if (!usuario) {
 
             return res.status(400).json({
-                mensaje:
-                    "El usuario es obligatorio."
+                mensaje: "El usuario es obligatorio."
             });
         }
-
 
         const ordenes =
             await obtenerOrdenesTecnico(usuario);
@@ -76,43 +44,35 @@ async function listarOrdenesTecnico(req, res) {
         );
 
         res.status(500).json({
-            mensaje:
-                "Error al consultar las órdenes."
+            mensaje: "Error al consultar las órdenes."
         });
     }
 }
 
 
 // =====================================================
-// DETALLE DE UNA ORDEN
+// OBTENER DETALLE DE UNA ORDEN
 // =====================================================
 
 async function obtenerDetalleOrden(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
-
-        const usuario =
-            req.query.usuario;
-
+        const idOrden = req.params.id;
+        const usuario = req.query.usuario;
 
         if (!usuario) {
 
             return res.status(400).json({
-                mensaje:
-                    "El usuario es obligatorio."
+                mensaje: "El usuario es obligatorio."
             });
         }
-
 
         const orden =
             await obtenerOrdenTecnico(
                 idOrden,
                 usuario
             );
-
 
         if (!orden) {
 
@@ -122,14 +82,11 @@ async function obtenerDetalleOrden(req, res) {
             });
         }
 
-
         const intervencion =
             await obtenerIntervencion(idOrden);
 
-
         const repuestos =
             await obtenerRepuestosOrden(idOrden);
-
 
         res.json({
             orden,
@@ -145,15 +102,14 @@ async function obtenerDetalleOrden(req, res) {
         );
 
         res.status(500).json({
-            mensaje:
-                "Error al consultar la orden."
+            mensaje: "Error al consultar la orden."
         });
     }
 }
 
 
 // =====================================================
-// REPUESTOS DISPONIBLES
+// LISTAR REPUESTOS DISPONIBLES
 // =====================================================
 
 async function listarRepuestos(req, res) {
@@ -173,29 +129,26 @@ async function listarRepuestos(req, res) {
         );
 
         res.status(500).json({
-            mensaje:
-                "Error al consultar los repuestos."
+            mensaje: "Error al consultar los repuestos."
         });
     }
 }
 
 
 // =====================================================
-// DIAGNÓSTICO
+// REGISTRAR DIAGNÓSTICO
 // =====================================================
 
 async function registrarDiagnostico(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const {
             diagnostico,
             fechaInicio
         } = req.body;
-
 
         if (!diagnostico || !fechaInicio) {
 
@@ -205,13 +158,11 @@ async function registrarDiagnostico(req, res) {
             });
         }
 
-
         await guardarDiagnostico(
             idOrden,
             diagnostico,
             fechaInicio
         );
-
 
         res.json({
             mensaje:
@@ -234,22 +185,20 @@ async function registrarDiagnostico(req, res) {
 
 
 // =====================================================
-// TIEMPO DE REPARACIÓN
+// REGISTRAR TIEMPO DE REPARACIÓN
 // =====================================================
 
 async function registrarTiempo(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const {
             fechaInicio,
             fechaFin,
             tiempoReparacion
         } = req.body;
-
 
         if (
             !fechaInicio ||
@@ -263,7 +212,6 @@ async function registrarTiempo(req, res) {
             });
         }
 
-
         if (Number(tiempoReparacion) < 0) {
 
             return res.status(400).json({
@@ -272,14 +220,12 @@ async function registrarTiempo(req, res) {
             });
         }
 
-
         await guardarTiempoReparacion(
             idOrden,
             fechaInicio,
             fechaFin,
             tiempoReparacion
         );
-
 
         res.json({
             mensaje:
@@ -302,20 +248,18 @@ async function registrarTiempo(req, res) {
 
 
 // =====================================================
-// ESTADO DE LA MÁQUINA
+// ACTUALIZAR ESTADO DE LA MÁQUINA
 // =====================================================
 
 async function registrarEstado(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const {
             estadoEquipo
         } = req.body;
-
 
         const estadosPermitidos = [
             "Operativo",
@@ -323,10 +267,7 @@ async function registrarEstado(req, res) {
             "Fuera de servicio"
         ];
 
-
-        if (!estadosPermitidos.includes(
-            estadoEquipo
-        )) {
+        if (!estadosPermitidos.includes(estadoEquipo)) {
 
             return res.status(400).json({
                 mensaje:
@@ -334,12 +275,10 @@ async function registrarEstado(req, res) {
             });
         }
 
-
         await actualizarEstadoMaquina(
             idOrden,
             estadoEquipo
         );
-
 
         res.json({
             mensaje:
@@ -369,14 +308,12 @@ async function registrarRepuesto(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const {
             idRepuesto,
             cantidad
         } = req.body;
-
 
         if (!idRepuesto || !cantidad) {
 
@@ -386,7 +323,6 @@ async function registrarRepuesto(req, res) {
             });
         }
 
-
         if (Number(cantidad) <= 0) {
 
             return res.status(400).json({
@@ -395,7 +331,6 @@ async function registrarRepuesto(req, res) {
             });
         }
 
-
         const resultado =
             await agregarRepuesto(
                 idOrden,
@@ -403,15 +338,12 @@ async function registrarRepuesto(req, res) {
                 Number(cantidad)
             );
 
-
         if (resultado.error) {
 
             return res.status(400).json({
-                mensaje:
-                    resultado.error
+                mensaje: resultado.error
             });
         }
-
 
         res.json({
             mensaje:
@@ -434,33 +366,27 @@ async function registrarRepuesto(req, res) {
 
 
 // =====================================================
-// CERRAR ORDEN
+// CERRAR ORDEN DE TRABAJO
 // =====================================================
 
 async function cerrarOrdenTecnico(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
-
+        const idOrden = req.params.id;
 
         const resultado =
             await cerrarOrden(idOrden);
 
-
         if (!resultado.correcto) {
 
             return res.status(400).json({
-                mensaje:
-                    resultado.mensaje
+                mensaje: resultado.mensaje
             });
         }
 
-
         res.json({
-            mensaje:
-                resultado.mensaje
+            mensaje: resultado.mensaje
         });
 
     } catch (error) {
@@ -486,14 +412,12 @@ async function obtenerIntervencionOrden(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const intervencion =
             await tecnicoModel.obtenerIntervencion(
                 idOrden
             );
-
 
         res.json({
             intervencion:
@@ -523,18 +447,15 @@ async function obtenerRepuestosOrdenTecnico(req, res) {
 
     try {
 
-        const idOrden =
-            req.params.id;
+        const idOrden = req.params.id;
 
         const repuestos =
             await tecnicoModel.obtenerRepuestosOrden(
                 idOrden
             );
 
-
         res.json({
-            repuestos:
-                repuestos || []
+            repuestos: repuestos || []
         });
 
     } catch (error) {
@@ -552,9 +473,11 @@ async function obtenerRepuestosOrdenTecnico(req, res) {
 }
 
 
-module.exports = {
+// =====================================================
+// EXPORTACIONES
+// =====================================================
 
-    listarTecnicos,
+module.exports = {
 
     listarOrdenesTecnico,
 

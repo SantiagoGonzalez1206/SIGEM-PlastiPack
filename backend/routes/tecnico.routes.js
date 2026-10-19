@@ -3,28 +3,17 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    listarTecnicos,
     listarOrdenesTecnico,
     obtenerDetalleOrden,
     listarRepuestos,
-    obtenerIntervencionOrden,
-    obtenerRepuestosOrdenTecnico,
     registrarDiagnostico,
     registrarTiempo,
     registrarEstado,
     registrarRepuesto,
-    cerrarOrdenTecnico
+    cerrarOrdenTecnico,
+    obtenerIntervencionOrden,
+    obtenerRepuestosOrdenTecnico
 } = require("../controllers/tecnico.controller");
-
-
-// =====================================================
-// LISTAR TÉCNICOS
-// =====================================================
-
-router.get(
-    "/",
-    listarTecnicos
-);
 
 
 // =====================================================
@@ -108,7 +97,7 @@ router.patch(
 
 
 // =====================================================
-// REGISTRAR REPUESTO
+// REPUESTO
 // =====================================================
 
 router.post(
