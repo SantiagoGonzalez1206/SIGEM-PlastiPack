@@ -9,6 +9,7 @@ const jefeRoutes = require("./routes/jefe.routes");
 const ordenesJefeRoutes = require("./routes/ordenes-jefe.routes");
 const preventivosJefeRoutes = require("./routes/preventivos-jefe.routes");
 const tecnicoRoutes =require("./routes/tecnico.routes");
+const historialRoutes =require("./routes/historial.routes");
 
 const conexion = require("./config/database");
 
@@ -27,6 +28,7 @@ app.use("/api/jefe/ordenes", ordenesJefeRoutes);
 app.use("/api/tecnicos", tecnicoRoutes);
 app.use("/api/jefe/preventivos",preventivosJefeRoutes);
 app.use("/api/tecnico",tecnicoRoutes);
+app.use("/api/historial",historialRoutes);
 
 conexion.getConnection()
     .then(function(connection) {

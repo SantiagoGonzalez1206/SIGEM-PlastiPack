@@ -2,12 +2,18 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>SIGEM - Preventivos</title>
 
     <link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
@@ -15,13 +21,24 @@
     <header class="encabezado">
 
         <div class="logo">
+
             <h1>SIGEM</h1>
-            <span>Gestión de mantenimiento</span>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
         </div>
 
+
         <div class="usuario-sesion">
+
             <span>●</span>
-            <span id="usuarioSesion">Jefe de mantenimiento</span>
+
+            <span id="usuarioSesion">
+                Jefe de mantenimiento
+            </span>
+
         </div>
 
     </header>
@@ -33,28 +50,74 @@
         <nav>
 
             <a href="jefe.html">
-                <span class="menu-icono">⌂</span>
+
+                <span class="menu-icono">
+                    ⌂
+                </span>
+
                 Inicio
+
             </a>
+
 
             <a href="ordenes-jefe.html">
-                <span class="menu-icono">☷</span>
+
+                <span class="menu-icono">
+                    ☷
+                </span>
+
                 Órdenes
+
             </a>
+
 
             <a href="asignaciones-jefe.html">
-                <span class="menu-icono">↔</span>
+
+                <span class="menu-icono">
+                    ↔
+                </span>
+
                 Asignaciones
+
             </a>
 
-            <a href="preventivos-jefe.html" class="menu-activo">
-                <span class="menu-icono">◷</span>
+
+            <a
+                href="preventivos-jefe.html"
+                class="menu-activo"
+            >
+
+                <span class="menu-icono">
+                    ◷
+                </span>
+
                 Preventivos
+
             </a>
 
-            <a href="#" id="cerrarSesion">
-                <span class="menu-icono">↪</span>
+
+            <a href="historial.html">
+
+                <span class="menu-icono">
+                    ◫
+                </span>
+
+                Historial
+
+            </a>
+
+
+            <a
+                href="#"
+                id="cerrarSesion"
+            >
+
+                <span class="menu-icono">
+                    ↪
+                </span>
+
                 Cerrar sesión
+
             </a>
 
         </nav>
@@ -62,9 +125,12 @@
     </aside>
 
 
+
     <main class="contenido">
 
-        <h1>Preventivos</h1>
+        <h1>
+            Preventivos
+        </h1>
 
         <p class="subtitulo">
             Programación de mantenimientos preventivos
@@ -73,11 +139,15 @@
 
         <section class="seccion">
 
-            <h2>Programar mantenimiento</h2>
+            <h2>
+                Programar mantenimiento
+            </h2>
+
 
             <form id="formularioPreventivo">
 
                 <div class="formulario-grid">
+
 
                     <div class="campo">
 
@@ -85,7 +155,10 @@
                             Máquina
                         </label>
 
-                        <select id="maquina" required>
+                        <select
+                            id="maquina"
+                            required
+                        >
 
                             <option value="">
                                 Selecciona una máquina
@@ -96,13 +169,17 @@
                     </div>
 
 
+
                     <div class="campo">
 
                         <label for="frecuencia">
                             Frecuencia
                         </label>
 
-                        <select id="frecuencia" required>
+                        <select
+                            id="frecuencia"
+                            required
+                        >
 
                             <option value="">
                                 Selecciona una frecuencia
@@ -129,6 +206,7 @@
                     </div>
 
 
+
                     <div class="campo campo-completo">
 
                         <label for="actividad">
@@ -143,6 +221,7 @@
                         ></textarea>
 
                     </div>
+
 
 
                     <div class="campo">
@@ -181,9 +260,13 @@
         </section>
 
 
+
         <section class="seccion">
 
-            <h2>Mantenimientos programados</h2>
+            <h2>
+                Mantenimientos programados
+            </h2>
+
 
             <div class="tabla-contenedor">
 
@@ -192,22 +275,44 @@
                     <thead>
 
                         <tr>
-                            <th>Máquina</th>
-                            <th>Actividad</th>
-                            <th>Frecuencia</th>
-                            <th>Próxima fecha</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
+
+                            <th>
+                                Máquina
+                            </th>
+
+                            <th>
+                                Actividad
+                            </th>
+
+                            <th>
+                                Frecuencia
+                            </th>
+
+                            <th>
+                                Próxima fecha
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acciones
+                            </th>
+
                         </tr>
 
                     </thead>
 
+
                     <tbody id="listaPreventivos">
 
                         <tr>
+
                             <td colspan="6">
                                 Cargando mantenimientos...
                             </td>
+
                         </tr>
 
                     </tbody>
@@ -222,7 +327,9 @@
 
 
     <script src="../js/dashboard-jefe.js"></script>
+
     <script src="../js/preventivos-jefe.js"></script>
+
     <script src="../js/cerrar-sesion.js"></script>
 
 </body>

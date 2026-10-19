@@ -17,6 +17,22 @@ if (rol !== "tecnico") {
 
 }
 
+/* =====================================================
+   MOSTRAR USUARIO
+   ===================================================== */
+
+const usuarioSesion =
+    document.getElementById(
+        "usuarioSesion"
+    );
+
+
+if (usuarioSesion) {
+
+    usuarioSesion.textContent =
+        usuario;
+
+}
 
 /* =====================================================
    OBTENER ID DE LA ORDEN

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Historial de mantenimiento - SIGEM</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+    <aside class="menu">
+
+        <nav id="menuPrincipal">
+
+            <!--
+                El menú se construye mediante JavaScript
+                dependiendo del rol del usuario.
+            -->
+
+        </nav>
+
+    </aside>
+
+
+    <main class="contenido historial-contenido">
+
+        <div class="encabezado-pagina">
+
+            <h1>
+                Historial de mantenimiento
+            </h1>
+
+            <p>
+                Consulta del historial de mantenimiento de las máquinas
+            </p>
+
+        </div>
+
+
+        <!-- SELECCIÓN DE MÁQUINA -->
+
+        <section class="seccion historial-selector">
+
+            <h2>
+                Seleccionar máquina
+            </h2>
+
+            <div class="formulario-historial">
+
+                <div class="campo">
+
+                    <label for="maquina">
+                        Máquina
+                    </label>
+
+                    <select id="maquina">
+
+                        <option value="">
+                            Seleccione una máquina
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="btnConsultar"
+                    class="boton-principal"
+                >
+                    Consultar historial
+                </button>
+
+            </div>
+
+            <p
+                id="mensajeHistorial"
+                class="mensaje-formulario"
+            ></p>
+
+        </section>
+
+
+        <!-- INFORMACIÓN DE LA MÁQUINA -->
+
+        <section
+            id="informacionMaquina"
+            class="seccion"
+            style="display: none;"
+        >
+
+            <h2>
+                Información de la máquina
+            </h2>
+
+            <div class="historial-datos-maquina">
+
+                <div>
+                    <span class="historial-etiqueta">
+                        Código
+                    </span>
+
+                    <strong id="codigoMaquina">
+                        -
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span class="historial-etiqueta">
+                        Nombre
+                    </span>
+
+                    <strong id="nombreMaquina">
+                        -
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span class="historial-etiqueta">
+                        Ubicación
+                    </span>
+
+                    <strong id="ubicacionMaquina">
+                        -
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span class="historial-etiqueta">
+                        Estado actual
+                    </span>
+
+                    <strong id="estadoMaquina">
+                        -
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORIAL -->
+
+        <section
+            id="seccionHistorial"
+            class="seccion"
+            style="display: none;"
+        >
+
+            <h2>
+                Intervenciones realizadas
+            </h2>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                OT
+                            </th>
+
+                            <th>
+                                Fecha
+                            </th>
+
+                            <th>
+                                Tipo
+                            </th>
+
+                            <th>
+                                Prioridad
+                            </th>
+
+                            <th>
+                                Diagnóstico
+                            </th>
+
+                            <th>
+                                Tiempo
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaHistorial">
+
+                        <tr>
+
+                            <td colspan="6">
+                                Seleccione una máquina para consultar su historial.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REPUESTOS -->
+
+        <section
+            id="seccionRepuestos"
+            class="seccion"
+            style="display: none;"
+        >
+
+            <h2>
+                Repuestos utilizados
+            </h2>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                OT
+                            </th>
+
+                            <th>
+                                Código
+                            </th>
+
+                            <th>
+                                Repuesto
+                            </th>
+
+                            <th>
+                                Cantidad
+                            </th>
+
+                            <th>
+                                Costo unitario
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaRepuestos">
+
+                        <tr>
+
+                            <td colspan="5">
+                                No hay repuestos registrados.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/historial.js"></script>
+
+</body>
+
+</html>
