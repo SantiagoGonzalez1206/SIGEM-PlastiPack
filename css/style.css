@@ -1722,3 +1722,16 @@ select:focus {
     }
 
 }
+
+/* =====================================================
+   DESCRIPCIÓN EN TABLAS DE REPORTES
+   ===================================================== */
+
+.tabla-solicitudes td.descripcion-reporte {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.4;
+    max-width: 300px;
+    min-width: 220px;
+}

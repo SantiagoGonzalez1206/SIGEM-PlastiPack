@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>SIGEM - Órdenes</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
 
+
 <body>
+
 
     <header class="encabezado">
 
         <div class="logo">
+
             <h1>SIGEM</h1>
-            <span>Gestión de mantenimiento</span>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
         </div>
 
+
         <div class="usuario-sesion">
+
             <span>●</span>
-            <span id="usuarioSesion">Jefe de mantenimiento</span>
+
+            <span id="usuarioSesion">
+                Jefe de mantenimiento
+            </span>
+
         </div>
 
     </header>
+
 
 
     <aside class="menu">
@@ -30,33 +55,74 @@
         <nav>
 
             <a href="jefe.html">
-                <span class="menu-icono">⌂</span>
+
+                <span class="menu-icono">
+                    ⌂
+                </span>
+
                 Inicio
+
             </a>
 
-            <a href="ordenes-jefe.html" class="menu-activo">
-                <span class="menu-icono">☷</span>
+
+            <a
+                href="ordenes-jefe.html"
+                class="menu-activo"
+            >
+
+                <span class="menu-icono">
+                    ☷
+                </span>
+
                 Órdenes
+
             </a>
+
 
             <a href="asignaciones-jefe.html">
-                <span class="menu-icono">↔</span>
+
+                <span class="menu-icono">
+                    ↔
+                </span>
+
                 Asignaciones
+
             </a>
+
 
             <a href="preventivos-jefe.html">
-                <span class="menu-icono">◷</span>
+
+                <span class="menu-icono">
+                    ◷
+                </span>
+
                 Preventivos
+
             </a>
+
 
             <a href="historial.html">
-                <span class="menu-icono">◫</span>
+
+                <span class="menu-icono">
+                    ◫
+                </span>
+
                 Historial
+
             </a>
 
-            <a href="#" id="cerrarSesion">
-                <span class="menu-icono">↪</span>
+
+            <a
+                href="#"
+                id="cerrarSesion"
+            >
+
+                <span class="menu-icono">
+                    ↪
+                </span>
+
                 Cerrar sesión
+
             </a>
 
         </nav>
@@ -64,46 +130,96 @@
     </aside>
 
 
+
     <main class="contenido">
 
-        <h1>Órdenes</h1>
+
+        <h1>
+            Órdenes
+        </h1>
+
 
         <p class="subtitulo">
-            Supervisión de órdenes de trabajo
+            Supervisión de solicitudes y órdenes de trabajo
         </p>
 
 
+
+        <!-- =====================================
+             RF-03
+        ====================================== -->
+
         <section class="seccion">
 
-            <h2>Órdenes de trabajo</h2>
+            <h2>
+                Solicitudes por validar
+            </h2>
+
+
+            <p class="texto-secundario">
+
+                Revise la información de la solicitud
+                antes de continuar con el proceso de mantenimiento.
+
+            </p>
+
 
             <div class="tabla-contenedor">
 
                 <table class="tabla-solicitudes">
 
+
                     <thead>
 
                         <tr>
-                            <th>OT</th>
-                            <th>Origen</th>
-                            <th>Máquina</th>
-                            <th>Prioridad</th>
-                            <th>Técnico</th>
-                            <th>Estado</th>
-                            <th>Acción</th>
+
+                            <th>
+                                Solicitud
+                            </th>
+
+                            <th>
+                                Máquina
+                            </th>
+
+                            <th>
+                                Tipo
+                            </th>
+
+                            <th>
+                                Falla
+                            </th>
+
+                            <th>
+                                Criticidad
+                            </th>
+
+                            <th>
+                                Prioridad registrada
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+
                         </tr>
 
                     </thead>
 
-                    <tbody id="listaOrdenes">
+
+                    <tbody id="listaSolicitudesPendientes">
 
                         <tr>
+
                             <td colspan="7">
-                                Cargando órdenes...
+
+                                Cargando solicitudes...
+
                             </td>
+
                         </tr>
 
                     </tbody>
+
 
                 </table>
 
@@ -111,12 +227,92 @@
 
         </section>
 
+
+
+        <!-- =====================================
+             RF-05 / RF-06
+        ====================================== -->
+
+        <section class="seccion">
+
+            <h2>
+                Órdenes de trabajo
+            </h2>
+
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                OT
+                            </th>
+
+                            <th>
+                                Origen
+                            </th>
+
+                            <th>
+                                Máquina
+                            </th>
+
+                            <th>
+                                Prioridad
+                            </th>
+
+                            <th>
+                                Técnico
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaOrdenes">
+
+                        <tr>
+
+                            <td colspan="7">
+                                Cargando órdenes...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+        </section>
+
+
     </main>
 
 
+
     <script src="../js/dashboard-jefe.js"></script>
+
     <script src="../js/ordenes-jefe.js"></script>
+
     <script src="../js/cerrar-sesion.js"></script>
 
+
 </body>
+
 </html>

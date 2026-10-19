@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const {
+    listarTecnicos,
     listarOrdenesTecnico,
     obtenerDetalleOrden,
     listarRepuestos,
@@ -14,6 +15,16 @@ const {
     registrarRepuesto,
     cerrarOrdenTecnico
 } = require("../controllers/tecnico.controller");
+
+
+// =====================================================
+// LISTAR TÉCNICOS
+// =====================================================
+
+router.get(
+    "/",
+    listarTecnicos
+);
 
 
 // =====================================================

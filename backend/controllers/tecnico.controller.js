@@ -1,6 +1,7 @@
 const tecnicoModel = require("../models/tecnico.model");
 
 const {
+    obtenerTecnicos,
     obtenerOrdenesTecnico,
     obtenerOrdenTecnico,
     obtenerIntervencion,
@@ -13,6 +14,38 @@ const {
     cerrarOrden
 } = require("../models/tecnico.model");
 
+
+// =====================================================
+// LISTAR TÉCNICOS
+// =====================================================
+
+async function listarTecnicos(req, res) {
+
+    try {
+
+        const tecnicos =
+            await obtenerTecnicos();
+
+        res.json(tecnicos);
+
+    } catch (error) {
+
+        console.error(
+            "Error al obtener técnicos:",
+            error
+        );
+
+        res.status(500).json({
+            mensaje:
+                "Error al consultar los técnicos."
+        });
+    }
+}
+
+
+// =====================================================
+// ÓRDENES DEL TÉCNICO
+// =====================================================
 
 async function listarOrdenesTecnico(req, res) {
 
@@ -49,6 +82,10 @@ async function listarOrdenesTecnico(req, res) {
     }
 }
 
+
+// =====================================================
+// DETALLE DE UNA ORDEN
+// =====================================================
 
 async function obtenerDetalleOrden(req, res) {
 
@@ -115,6 +152,10 @@ async function obtenerDetalleOrden(req, res) {
 }
 
 
+// =====================================================
+// REPUESTOS DISPONIBLES
+// =====================================================
+
 async function listarRepuestos(req, res) {
 
     try {
@@ -138,6 +179,10 @@ async function listarRepuestos(req, res) {
     }
 }
 
+
+// =====================================================
+// DIAGNÓSTICO
+// =====================================================
 
 async function registrarDiagnostico(req, res) {
 
@@ -187,6 +232,10 @@ async function registrarDiagnostico(req, res) {
     }
 }
 
+
+// =====================================================
+// TIEMPO DE REPARACIÓN
+// =====================================================
 
 async function registrarTiempo(req, res) {
 
@@ -252,6 +301,10 @@ async function registrarTiempo(req, res) {
 }
 
 
+// =====================================================
+// ESTADO DE LA MÁQUINA
+// =====================================================
+
 async function registrarEstado(req, res) {
 
     try {
@@ -307,6 +360,10 @@ async function registrarEstado(req, res) {
     }
 }
 
+
+// =====================================================
+// REGISTRAR REPUESTO
+// =====================================================
 
 async function registrarRepuesto(req, res) {
 
@@ -376,6 +433,10 @@ async function registrarRepuesto(req, res) {
 }
 
 
+// =====================================================
+// CERRAR ORDEN
+// =====================================================
+
 async function cerrarOrdenTecnico(req, res) {
 
     try {
@@ -416,17 +477,27 @@ async function cerrarOrdenTecnico(req, res) {
     }
 }
 
+
+// =====================================================
+// CONSULTAR INTERVENCIÓN
+// =====================================================
+
 async function obtenerIntervencionOrden(req, res) {
 
     try {
 
-        const idOrden = req.params.id;
+        const idOrden =
+            req.params.id;
 
         const intervencion =
-            await tecnicoModel.obtenerIntervencion(idOrden);
+            await tecnicoModel.obtenerIntervencion(
+                idOrden
+            );
+
 
         res.json({
-            intervencion: intervencion || null
+            intervencion:
+                intervencion || null
         });
 
     } catch (error) {
@@ -444,19 +515,26 @@ async function obtenerIntervencionOrden(req, res) {
 }
 
 
+// =====================================================
+// CONSULTAR REPUESTOS DE UNA ORDEN
+// =====================================================
+
 async function obtenerRepuestosOrdenTecnico(req, res) {
 
     try {
 
-        const idOrden = req.params.id;
+        const idOrden =
+            req.params.id;
 
         const repuestos =
             await tecnicoModel.obtenerRepuestosOrden(
                 idOrden
             );
 
+
         res.json({
-            repuestos: repuestos || []
+            repuestos:
+                repuestos || []
         });
 
     } catch (error) {
@@ -475,14 +553,27 @@ async function obtenerRepuestosOrdenTecnico(req, res) {
 
 
 module.exports = {
+
+    listarTecnicos,
+
     listarOrdenesTecnico,
+
     obtenerDetalleOrden,
+
     listarRepuestos,
+
     registrarDiagnostico,
+
     registrarTiempo,
+
     registrarEstado,
+
     registrarRepuesto,
+
     cerrarOrdenTecnico,
+
     obtenerIntervencionOrden,
-    obtenerRepuestosOrdenTecnico,
+
+    obtenerRepuestosOrdenTecnico
+
 };
