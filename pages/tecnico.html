@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Técnico</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/tecnico.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MENÚ
+         ===================================================== -->
+
+    <aside class="menu">
+
+        <nav>
+
+            <a
+                href="tecnico.html"
+                class="menu-activo"
+            >
+
+                <span class="menu-icono">
+                    ⌂
+                </span>
+
+                Inicio
+
+            </a>
+
+
+            <a href="ordenes-tecnico.html">
+
+                <span class="menu-icono">
+                    ☷
+                </span>
+
+                Mis órdenes
+
+            </a>
+
+
+            <a href="historial.html">
+
+                <span class="menu-icono">
+                    ◫
+                </span>
+
+                Historial
+
+            </a>
+
+
+            <a
+                href="#"
+                id="cerrarSesion"
+            >
+
+                <span class="menu-icono">
+                    ↪
+                </span>
+
+                Cerrar sesión
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+
+    <main class="contenido">
+
+        <div class="encabezado-pagina">
+
+            <h1>
+                Inicio
+            </h1>
+
+            <p>
+                Resumen de las órdenes de mantenimiento asignadas
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             RESUMEN
+             ================================================= -->
+
+        <section class="dashboard-tecnico-grid">
+
+
+            <!-- ÓRDENES ASIGNADAS -->
+
+            <article class="tarjeta-dashboard-tecnico">
+
+                <div class="icono-dashboard-tecnico">
+
+                    ☷
+
+                </div>
+
+
+                <div class="contenido-tarjeta-tecnico">
+
+                    <h3>
+                        Órdenes asignadas
+                    </h3>
+
+                    <strong id="totalOrdenes">
+                        0
+                    </strong>
+
+                    <p>
+                        Órdenes registradas
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- PENDIENTES -->
+
+            <article class="tarjeta-dashboard-tecnico">
+
+                <div class="icono-dashboard-tecnico">
+
+                    !
+
+                </div>
+
+
+                <div class="contenido-tarjeta-tecnico">
+
+                    <h3>
+                        Pendientes
+                    </h3>
+
+                    <strong id="ordenesPendientes">
+                        0
+                    </strong>
+
+                    <p>
+                        Órdenes por atender
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- EN PROCESO -->
+
+            <article class="tarjeta-dashboard-tecnico">
+
+                <div class="icono-dashboard-tecnico">
+
+                    ◷
+
+                </div>
+
+
+                <div class="contenido-tarjeta-tecnico">
+
+                    <h3>
+                        En proceso
+                    </h3>
+
+                    <strong id="ordenesEnProceso">
+                        0
+                    </strong>
+
+                    <p>
+                        Órdenes en reparación
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- CERRADAS -->
+
+            <article class="tarjeta-dashboard-tecnico">
+
+                <div class="icono-dashboard-tecnico">
+
+                    ✓
+
+                </div>
+
+
+                <div class="contenido-tarjeta-tecnico">
+
+                    <h3>
+                        Cerradas
+                    </h3>
+
+                    <strong id="ordenesCerradas">
+                        0
+                    </strong>
+
+                    <p>
+                        Órdenes finalizadas
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             RESUMEN GENERAL
+             ================================================= -->
+
+        <section class="bloque-resumen-tecnico">
+
+            <div>
+
+                <h2>
+                    Estado de mantenimiento
+                </h2>
+
+                <p id="mensajeResumenTecnico">
+                    Consultando información...
+                </p>
+
+            </div>
+
+
+            <a
+                href="ordenes-tecnico.html"
+                class="boton-resumen-tecnico"
+            >
+
+                Ver mis órdenes
+
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <script src="../js/dashboard-tecnico.js"></script>
+
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+
+</html>

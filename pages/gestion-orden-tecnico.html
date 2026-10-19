@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Gestión de OT</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>SIGEM</h1>
+            <span>Gestión de mantenimiento</span>
+        </div>
+
+        <div class="usuario-sesion">
+            <span>●</span>
+            <span id="usuarioSesion">Jefe de mantenimiento</span>
+        </div>
+
+    </header>
+
+
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="tecnico.html">
+
+                <span class="menu-icono">
+                    ⌂
+                </span>
+
+                Inicio
+
+            </a>
+
+
+            <a
+                href="ordenes-tecnico.html"
+                class="menu-activo"
+            >
+
+                <span class="menu-icono">
+                    ☷
+                </span>
+
+                Mis órdenes
+
+            </a>
+
+
+            <a href="historial.html">
+
+                <span class="menu-icono">
+                    ◫
+                </span>
+
+                Historial
+
+            </a>
+
+
+            <a
+                href="#"
+                id="cerrarSesion"
+            >
+
+                <span class="menu-icono">
+                    ↪
+                </span>
+
+                Cerrar sesión
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="contenido">
+
+
+        <h1>
+            Gestión de orden de trabajo
+        </h1>
+
+
+        <p class="subtitulo">
+            Registro de información de mantenimiento
+        </p>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Información de la orden
+            </h2>
+
+
+            <div
+                id="informacionOrden"
+            >
+
+                Cargando información...
+
+            </div>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Diagnóstico
+            </h2>
+
+
+            <form
+                id="formularioDiagnostico"
+            >
+
+                <div class="campo">
+
+                    <label for="diagnostico">
+                        Diagnóstico
+                    </label>
+
+                    <textarea
+                        id="diagnostico"
+                        rows="5"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="fechaInicio">
+                        Fecha y hora de inicio
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="fechaInicio"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="boton-principal"
+                >
+                    Guardar diagnóstico
+                </button>
+
+
+                <p id="mensajeDiagnostico"></p>
+
+            </form>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Tiempo de reparación
+            </h2>
+
+
+            <form
+                id="formularioTiempo"
+            >
+
+                <div class="formulario-grid">
+
+
+                    <div class="campo">
+
+                        <label for="tiempoInicio">
+                            Inicio
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="tiempoInicio"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="tiempoFin">
+                            Finalización
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="tiempoFin"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="tiempoReparacion">
+                        Tiempo de reparación (horas)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tiempoReparacion"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="boton-principal"
+                >
+                    Guardar tiempo
+                </button>
+
+
+                <p id="mensajeTiempo"></p>
+
+            </form>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Estado del equipo
+            </h2>
+
+
+            <form
+                id="formularioEstado"
+            >
+
+                <div class="campo">
+
+                    <label for="estadoEquipo">
+                        Estado
+                    </label>
+
+                    <select
+                        id="estadoEquipo"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona un estado
+                        </option>
+
+                        <option value="Operativo">
+                            Operativo
+                        </option>
+
+                        <option value="En reparación">
+                            En reparación
+                        </option>
+
+                        <option value="Fuera de servicio">
+                            Fuera de servicio
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="boton-principal"
+                >
+                    Actualizar estado
+                </button>
+
+
+                <p id="mensajeEstado"></p>
+
+            </form>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Repuestos utilizados
+            </h2>
+
+
+            <form
+                id="formularioRepuesto"
+            >
+
+                <div class="formulario-grid">
+
+
+                    <div class="campo">
+
+                        <label for="repuesto">
+                            Repuesto
+                        </label>
+
+                        <select
+                            id="repuesto"
+                            required
+                        >
+
+                            <option value="">
+                                Selecciona un repuesto
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cantidadRepuesto">
+                            Cantidad
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cantidadRepuesto"
+                            min="1"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="boton-principal"
+                >
+                    Registrar repuesto
+                </button>
+
+
+                <p id="mensajeRepuesto"></p>
+
+            </form>
+
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-solicitudes">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Código
+                            </th>
+
+                            <th>
+                                Repuesto
+                            </th>
+
+                            <th>
+                                Cantidad
+                            </th>
+
+                            <th>
+                                Costo unitario
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaRepuestos">
+
+                        <tr>
+
+                            <td colspan="4">
+                                Cargando...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <h2>
+                Finalizar orden
+            </h2>
+
+
+            <p>
+                La orden solo podrá cerrarse cuando
+                tenga diagnóstico y tiempo de reparación.
+            </p>
+
+
+            <button
+                type="button"
+                id="botonCerrarOrden"
+                class="boton-principal"
+            >
+                Cerrar orden de trabajo
+            </button>
+
+
+            <p id="mensajeCierre"></p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="../js/gestion-orden-tecnico.js"></script>
+
+    <script src="../js/cerrar-sesion.js"></script>
+
+
+</body>
+
+</html>

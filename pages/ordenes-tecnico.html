@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Mis órdenes</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/tecnico.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
+    <header class="encabezado">
+
+        <div class="logo">
+
+            <h1>SIGEM</h1>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
+        </div>
+
+        <div class="usuario-sesion">
+
+            <span>●</span>
+
+            <span id="usuarioSesion">Operario de producción</span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MENÚ
+         ===================================================== -->
+
+    <aside class="menu">
+
+        <nav>
+
+            <a href="tecnico.html">
+
+                <span class="menu-icono">
+                    ⌂
+                </span>
+
+                Inicio
+
+            </a>
+
+
+            <a
+                href="ordenes-tecnico.html"
+                class="menu-activo"
+            >
+
+                <span class="menu-icono">
+                    ☷
+                </span>
+
+                Mis órdenes
+
+            </a>
+
+
+            <a href="historial.html">
+
+                <span class="menu-icono">
+                    ◫
+                </span>
+
+                Historial
+
+            </a>
+
+
+            <a
+                href="#"
+                id="cerrarSesion"
+            >
+
+                <span class="menu-icono">
+                    ↪
+                </span>
+
+                Cerrar sesión
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
+    <main class="contenido">
+
+        <div class="encabezado-pagina">
+
+            <h1>
+                Mis órdenes
+            </h1>
+
+            <p>
+                Órdenes de trabajo asignadas
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLA
+             ================================================= -->
+
+        <section class="seccion-tabla-tecnico">
+
+            <div class="cabecera-tabla-tecnico">
+
+                <div>
+
+                    <h2>
+                        Órdenes de trabajo
+                    </h2>
+
+                    <p>
+                        Consulta y gestiona las órdenes asignadas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tabla-scroll-tecnico">
+
+                <table class="tabla-tecnico">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                OT
+                            </th>
+
+                            <th>
+                                Máquina
+                            </th>
+
+                            <th>
+                                Prioridad
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaOrdenes">
+
+                        <tr>
+
+                            <td colspan="5">
+                                Consultando órdenes...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <script src="../js/ordenes-tecnico.js"></script>
+
+    <script src="../js/cerrar-sesion.js"></script>
+
+</body>
+
+</html>
