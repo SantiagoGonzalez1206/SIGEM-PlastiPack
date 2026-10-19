@@ -56,13 +56,16 @@ async function cargarResumen() {
 }
 
 async function cargarAlertas() {
-    const listaAlertas = document.getElementById("listaAlertas");
+
+    const listaAlertas =
+        document.getElementById("listaAlertas");
 
     if (!listaAlertas) {
         return;
     }
 
     try {
+
         const respuesta = await fetch(
             "http://localhost:3000/api/jefe/alertas"
         );
@@ -70,24 +73,30 @@ async function cargarAlertas() {
         const datos = await respuesta.json();
 
         if (!respuesta.ok) {
+
             listaAlertas.innerHTML = `
                 <div class="alerta">
-                    <p>No se pudieron consultar las alertas.</p>
+                    <p>
+                        No se pudieron consultar las alertas.
+                    </p>
                 </div>
             `;
+
             return;
         }
+
 
         listaAlertas.innerHTML = "";
 
         let hayAlertas = false;
 
-        if (datos.preventivo) {
+
+        datos.preventivos.forEach(function(preventivo) {
+
             hayAlertas = true;
 
-            const fecha = new Date(
-                datos.preventivo.proxima_fecha
-            );
+            const fecha =
+                new Date(preventivo.proxima_fecha);
 
             const hoy = new Date();
 
@@ -97,61 +106,113 @@ async function cargarAlertas() {
                     (1000 * 60 * 60 * 24)
                 );
 
-            const textoDias =
-                diferencia === 1
-                    ? "Vence en 1 día"
-                    : `Vence en ${diferencia} días`;
+
+            let textoDias;
+
+            if (diferencia === 0) {
+
+                textoDias = "Vence hoy";
+
+            } else if (diferencia === 1) {
+
+                textoDias = "Vence en 1 día";
+
+            } else {
+
+                textoDias =
+                    `Vence en ${diferencia} días`;
+
+            }
+
 
             listaAlertas.innerHTML += `
                 <div class="alerta">
+
                     <div>
-                        <strong>Preventivo próximo</strong>
+
+                        <strong>
+                            Preventivo próximo
+                        </strong>
+
                         <p>
-                            ${datos.preventivo.codigo_maquina}
+                            ${preventivo.codigo_maquina}
                             ·
-                            ${datos.preventivo.nombre_maquina}
+                            ${preventivo.nombre_maquina}
                         </p>
+
                     </div>
-                    <span>${textoDias}</span>
+
+                    <span>
+                        ${textoDias}
+                    </span>
+
                 </div>
             `;
-        }
 
-        if (datos.ordenUrgente) {
+        });
+
+
+        datos.ordenesUrgentes.forEach(function(orden) {
+
             hayAlertas = true;
 
+
             listaAlertas.innerHTML += `
                 <div class="alerta">
+
                     <div>
-                        <strong>OT urgente</strong>
+
+                        <strong>
+                            OT urgente
+                        </strong>
+
                         <p>
-                            OT-${datos.ordenUrgente.numero_consecutivo}
+                            OT-${orden.numero_consecutivo}
                             ·
-                            ${datos.ordenUrgente.nombre_maquina}
+                            ${orden.nombre_maquina}
                         </p>
+
                     </div>
-                    <span>Alta prioridad</span>
+
+                    <span>
+                        Alta prioridad
+                    </span>
+
                 </div>
             `;
-        }
+
+        });
+
 
         if (!hayAlertas) {
+
             listaAlertas.innerHTML = `
                 <div class="alerta">
-                    <p>No hay alertas actualmente.</p>
+
+                    <p>
+                        No hay alertas actualmente.
+                    </p>
+
                 </div>
             `;
         }
 
+
     } catch (error) {
+
         console.error(
             "Error al cargar alertas:",
             error
         );
 
+
         listaAlertas.innerHTML = `
             <div class="alerta">
-                <p>No se pudo conectar con el servidor.</p>
+
+                <p>
+                    No se pudo conectar con el servidor.
+                </p>
+
             </div>
         `;
     }

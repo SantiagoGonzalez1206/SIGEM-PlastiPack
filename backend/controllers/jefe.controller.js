@@ -38,6 +38,7 @@ async function obtenerAlertas(req, res) {
     }
 }
 
+
 module.exports = {
     obtenerResumen,
     obtenerAlertas

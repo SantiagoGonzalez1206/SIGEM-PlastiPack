@@ -1132,3 +1132,38 @@ body {
     display: block;
     margin-top: 4px;
 }
+
+/* Acciones dentro de tablas */
+.acciones-tabla {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.acciones-tabla .boton-secundario {
+    width: auto;
+    min-width: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Columnas de acciones */
+.tabla-solicitudes th:last-child,
+.tabla-solicitudes td:last-child {
+    min-width: 150px;
+}
+
+/* Evita que los botones deformen la tabla */
+.tabla-solicitudes {
+    min-width: 900px;
+}
+
+/* Texto secundario de las tablas */
+.tabla-solicitudes .texto-secundario {
+    display: block;
+    margin-top: 4px;
+    color: #68717c;
+    font-size: 13px;
+}

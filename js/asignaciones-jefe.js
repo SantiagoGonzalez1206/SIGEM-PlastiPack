@@ -59,7 +59,7 @@ async function cargarTecnicos() {
 
         tecnico.innerHTML = `
             <option value="">
-                Selecciona un técnico
+                Sin asignar
             </option>
         `;
 
@@ -90,19 +90,18 @@ async function cargarAsignaciones() {
     try {
 
         const respuesta = await fetch(
-            "http://localhost:3000/api/jefe/ordenes"
+            "http://localhost:3000/api/jefe/ordenes/gestionar"
         );
 
         const ordenes = await respuesta.json();
 
-        listaAsignaciones.innerHTML = "";
 
-        if (ordenes.length === 0) {
+        if (!respuesta.ok) {
 
             listaAsignaciones.innerHTML = `
                 <tr>
-                    <td colspan="5">
-                        No hay órdenes registradas.
+                    <td colspan="6">
+                        No se pudieron consultar las asignaciones.
                     </td>
                 </tr>
             `;
@@ -110,20 +109,43 @@ async function cargarAsignaciones() {
             return;
         }
 
+
+        listaAsignaciones.innerHTML = "";
+
+
+        if (ordenes.length === 0) {
+
+            listaAsignaciones.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No hay órdenes activas para gestionar.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
         ordenes.forEach(function(item) {
 
-            const fila = document.createElement("tr");
+            const fila =
+                document.createElement("tr");
+
 
             const tecnicoAsignado =
                 item.nombre_tecnico || "Sin asignar";
 
+
             fila.innerHTML = `
+
                 <td>
                     OT-${item.numero_consecutivo}
                 </td>
 
                 <td>
                     ${item.codigo_maquina}
+
                     <span class="texto-secundario">
                         ${item.nombre_maquina}
                     </span>
@@ -140,11 +162,33 @@ async function cargarAsignaciones() {
                 <td>
                     ${item.estado}
                 </td>
+
+                <td>
+
+                    <div class="acciones-tabla">
+
+                        <button
+                            type="button"
+                            class="boton-secundario"
+                            onclick="seleccionarAsignacion(
+                                ${item.id_orden},
+                                ${item.id_tecnico || "null"}
+                            )"
+                        >
+                            Gestionar
+                        </button>
+
+                    </div>
+
+                </td>
+
             `;
+
 
             listaAsignaciones.appendChild(fila);
 
         });
+
 
     } catch (error) {
 
@@ -152,6 +196,15 @@ async function cargarAsignaciones() {
             "Error al cargar asignaciones:",
             error
         );
+
+
+        listaAsignaciones.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    No se pudo conectar con el servidor.
+                </td>
+            </tr>
+        `;
     }
 }
 
@@ -227,7 +280,37 @@ formularioAsignacion.addEventListener(
     }
 );
 
+function seleccionarAsignacion(
+    idOrden,
+    idTecnico
+) {
+
+    orden.value = idOrden;
+
+    if (idTecnico === null) {
+
+        tecnico.value = "";
+
+    } else {
+
+        tecnico.value = idTecnico;
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    mensajeAsignacion.textContent =
+        "Puedes modificar la asignación seleccionada.";
+
+    mensajeAsignacion.style.color =
+        "#1976d2";
+}
 
 cargarOrdenes();
 cargarTecnicos();
 cargarAsignaciones();
+seleccionarAsignacion();
