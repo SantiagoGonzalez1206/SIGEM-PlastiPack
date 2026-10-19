@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Indicadores</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>SIGEM</h1>
+
+        <span>
+            Gestión de mantenimiento
+        </span>
+
+    </div>
+
+
+    <div class="usuario-sesion">
+
+        <span>●</span>
+
+        <span id="usuarioSesion">
+            Gerente de planta
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<aside class="menu">
+
+    <nav>
+
+        <a href="gerente.html">
+
+            <span class="menu-icono">
+                ⌂
+            </span>
+
+            Inicio
+
+        </a>
+
+
+        <a href="historial.html">
+
+            <span class="menu-icono">
+                ◫
+            </span>
+
+            Historial
+
+        </a>
+
+
+        <a href="reportes-gerente.html">
+
+            <span class="menu-icono">
+                ▤
+            </span>
+
+            Reportes
+
+        </a>
+
+
+        <a
+            href="indicadores-gerente.html"
+            class="menu-activo"
+        >
+
+            <span class="menu-icono">
+                ◈
+            </span>
+
+            Indicadores
+
+        </a>
+
+
+        <a
+            href="#"
+            id="cerrarSesion"
+        >
+
+            <span class="menu-icono">
+                ↪
+            </span>
+
+            Cerrar sesión
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<main class="contenido">
+
+
+    <div class="encabezado-pagina">
+
+        <h1>
+            Indicadores de gestión
+        </h1>
+
+        <p>
+            Indicadores calculados a partir de la información registrada
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ÓRDENES
+         ================================================= -->
+
+    <section class="seccion">
+
+    <h2>
+        Órdenes de trabajo
+    </h2>
+
+
+    <div class="resumen-gerente">
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ☷
+            </div>
+
+            <div>
+
+                <h3>
+                    Total
+                </h3>
+
+                <strong id="totalOrdenes">
+                    0
+                </strong>
+
+                <p>
+                    Órdenes registradas
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ✓
+            </div>
+
+            <div>
+
+                <h3>
+                    Cerradas
+                </h3>
+
+                <strong id="ordenesCerradas">
+                    0
+                </strong>
+
+                <p>
+                    Órdenes finalizadas
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                !
+            </div>
+
+            <div>
+
+                <h3>
+                    Activas
+                </h3>
+
+                <strong id="ordenesActivas">
+                    0
+                </strong>
+
+                <p>
+                    Pendientes o en proceso
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ×
+            </div>
+
+            <div>
+
+                <h3>
+                    Canceladas
+                </h3>
+
+                <strong id="ordenesCanceladas">
+                    0
+                </strong>
+
+                <p>
+                    Órdenes canceladas
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+    <!-- =================================================
+         TIEMPOS
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Tiempos de reparación
+        </h2>
+
+
+        <div class="resumen-gerente">
+
+
+            <article class="tarjeta-gerente">
+
+                <div class="icono-gerente">
+                    ◷
+                </div>
+
+                <div>
+
+                    <h3>
+                        Promedio
+                    </h3>
+
+                    <strong id="promedioReparacion">
+                        0
+                    </strong>
+
+                    <p>
+                        Horas
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="tarjeta-gerente">
+
+                <div class="icono-gerente">
+                    ↑
+                </div>
+
+                <div>
+
+                    <h3>
+                        Mayor tiempo
+                    </h3>
+
+                    <strong id="mayorReparacion">
+                        0
+                    </strong>
+
+                    <p>
+                        Horas
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="tarjeta-gerente">
+
+                <div class="icono-gerente">
+                    ↓
+                </div>
+
+                <div>
+
+                    <h3>
+                        Menor tiempo
+                    </h3>
+
+                    <strong id="menorReparacion">
+                        0
+                    </strong>
+
+                    <p>
+                        Horas
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MANTENIMIENTO
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Tipos de mantenimiento
+        </h2>
+
+
+        <div class="resumen-secundario">
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="correctivos">
+                    0
+                </strong>
+
+                <span>
+                    Correctivos
+                </span>
+
+            </div>
+
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="preventivos">
+                    0
+                </strong>
+
+                <span>
+                    Preventivos
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ESTADO DE MÁQUINAS
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Estado de las máquinas
+        </h2>
+
+
+        <div class="resumen-secundario">
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="operativas">
+                    0
+                </strong>
+
+                <span>
+                    Operativas
+                </span>
+
+            </div>
+
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="enReparacion">
+                    0
+                </strong>
+
+                <span>
+                    En reparación
+                </span>
+
+            </div>
+
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="fueraServicio">
+                    0
+                </strong>
+
+                <span>
+                    Fuera de servicio
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         REPUESTOS
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Consumo de repuestos
+        </h2>
+
+
+        <div class="resumen-secundario">
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="unidadesRepuestos">
+                    0
+                </strong>
+
+                <span>
+                    Unidades utilizadas
+                </span>
+
+            </div>
+
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="costoRepuestos">
+                    $0
+                </strong>
+
+                <span>
+                    Costo registrado
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="../js/indicadores-gerente.js"></script>
+
+<script src="../js/cerrar-sesion.js"></script>
+
+
+</body>
+
+</html>

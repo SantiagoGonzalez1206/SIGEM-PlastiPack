@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Gerente de planta</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>SIGEM</h1>
+
+        <span>
+            Gestión de mantenimiento
+        </span>
+
+    </div>
+
+
+    <div class="usuario-sesion">
+
+        <span>●</span>
+
+        <span id="usuarioSesion">
+            Gerente de planta
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<aside class="menu">
+
+    <nav>
+
+        <a
+            href="gerente.html"
+            class="menu-activo"
+        >
+
+            <span class="menu-icono">
+                ⌂
+            </span>
+
+            Inicio
+
+        </a>
+
+
+        <a href="historial.html">
+
+            <span class="menu-icono">
+                ◫
+            </span>
+
+            Historial
+
+        </a>
+
+
+        <a href="reportes-gerente.html">
+
+            <span class="menu-icono">
+                ▤
+            </span>
+
+            Reportes
+
+        </a>
+
+
+        <a href="indicadores-gerente.html">
+
+            <span class="menu-icono">
+                ◈
+            </span>
+
+            Indicadores
+
+        </a>
+
+
+        <a
+            href="#"
+            id="cerrarSesion"
+        >
+
+            <span class="menu-icono">
+                ↪
+            </span>
+
+            Cerrar sesión
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<main class="contenido">
+
+
+    <div class="encabezado-pagina">
+
+        <h1>
+            Inicio
+        </h1>
+
+        <p>
+            Resumen de la gestión de mantenimiento
+        </p>
+
+    </div>
+
+
+
+    <section class="resumen-gerente">
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ☷
+            </div>
+
+            <div>
+
+                <h3>
+                    Órdenes de trabajo
+                </h3>
+
+                <strong id="totalOrdenes">
+                    0
+                </strong>
+
+                <p>
+                    Registradas
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ✓
+            </div>
+
+            <div>
+
+                <h3>
+                    Órdenes cerradas
+                </h3>
+
+                <strong id="ordenesCerradas">
+                    0
+                </strong>
+
+                <p>
+                    Finalizadas
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                ◷
+            </div>
+
+            <div>
+
+                <h3>
+                    Tiempo promedio
+                </h3>
+
+                <strong id="promedioReparacion">
+                    0
+                </strong>
+
+                <p>
+                    Horas de reparación
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="tarjeta-gerente">
+
+            <div class="icono-gerente">
+                !
+            </div>
+
+            <div>
+
+                <h3>
+                    Órdenes activas
+                </h3>
+
+                <strong id="ordenesActivas">
+                    0
+                </strong>
+
+                <p>
+                    Pendientes o en proceso
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+
+    <section class="seccion">
+
+        <h2>
+            Gestión de mantenimiento
+        </h2>
+
+
+        <div class="acciones-rapidas">
+
+
+            <a
+                href="historial.html"
+                class="accion-rapida"
+            >
+
+                <div class="icono-accion">
+                    ◫
+                </div>
+
+                <span>
+                    Consultar historial de máquinas
+                </span>
+
+                <span class="flecha">
+                    →
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="reportes-gerente.html"
+                class="accion-rapida"
+            >
+
+                <div class="icono-accion">
+                    ▤
+                </div>
+
+                <span>
+                    Consultar reportes de mantenimiento
+                </span>
+
+                <span class="flecha">
+                    →
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="indicadores-gerente.html"
+                class="accion-rapida"
+            >
+
+                <div class="icono-accion">
+                    ◈
+                </div>
+
+                <span>
+                    Consultar indicadores de gestión
+                </span>
+
+                <span class="flecha">
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <section class="seccion">
+
+        <h2>
+            Tipos de mantenimiento
+        </h2>
+
+
+        <div class="resumen-secundario">
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="correctivos">
+                    0
+                </strong>
+
+                <span>
+                    Correctivos
+                </span>
+
+            </div>
+
+
+
+            <div class="tarjeta-secundaria">
+
+                <strong id="preventivos">
+                    0
+                </strong>
+
+                <span>
+                    Preventivos
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="../js/dashboard-gerente.js"></script>
+
+<script src="../js/cerrar-sesion.js"></script>
+
+
+</body>
+
+</html>

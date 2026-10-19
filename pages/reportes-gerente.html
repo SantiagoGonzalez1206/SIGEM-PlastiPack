@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SIGEM - Reportes</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>SIGEM</h1>
+
+        <span>
+            Gestión de mantenimiento
+        </span>
+
+    </div>
+
+
+    <div class="usuario-sesion">
+
+        <span>●</span>
+
+        <span id="usuarioSesion">
+            Gerente de planta
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<aside class="menu">
+
+    <nav>
+
+        <a href="gerente.html">
+
+            <span class="menu-icono">
+                ⌂
+            </span>
+
+            Inicio
+
+        </a>
+
+
+        <a href="historial.html">
+
+            <span class="menu-icono">
+                ◫
+            </span>
+
+            Historial
+
+        </a>
+
+
+        <a
+            href="reportes-gerente.html"
+            class="menu-activo"
+        >
+
+            <span class="menu-icono">
+                ▤
+            </span>
+
+            Reportes
+
+        </a>
+
+
+        <a href="indicadores-gerente.html">
+
+            <span class="menu-icono">
+                ◈
+            </span>
+
+            Indicadores
+
+        </a>
+
+
+        <a
+            href="#"
+            id="cerrarSesion"
+        >
+
+            <span class="menu-icono">
+                ↪
+            </span>
+
+            Cerrar sesión
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<main class="contenido">
+
+
+    <div class="encabezado-pagina">
+
+        <h1>
+            Reportes
+        </h1>
+
+        <p>
+            Información registrada de la gestión de mantenimiento
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MANTENIMIENTOS REALIZADOS
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Mantenimientos realizados
+        </h2>
+
+        <p>
+            Órdenes de trabajo cerradas y mantenimientos ejecutados.
+        </p>
+
+
+        <div class="tabla-contenedor">
+
+            <table class="tabla-solicitudes">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            OT
+                        </th>
+
+                        <th>
+                            Máquina
+                        </th>
+
+                        <th>
+                            Tipo
+                        </th>
+
+                        <th>
+                            Prioridad
+                        </th>
+
+                        <th>
+                            Técnico
+                        </th>
+
+                        <th>
+                            Fecha de cierre
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tablaMantenimientos">
+
+                    <tr>
+
+                        <td colspan="6">
+                            Cargando información...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONSUMO DE REPUESTOS
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Consumo de repuestos
+        </h2>
+
+        <p>
+            Repuestos utilizados durante las intervenciones.
+        </p>
+
+
+        <div class="tabla-contenedor">
+
+            <table class="tabla-solicitudes">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Código
+                        </th>
+
+                        <th>
+                            Repuesto
+                        </th>
+
+                        <th>
+                            Cantidad utilizada
+                        </th>
+
+                        <th>
+                            Costo total
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tablaRepuestos">
+
+                    <tr>
+
+                        <td colspan="4">
+                            Cargando información...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TIEMPOS DE REPARACIÓN
+         ================================================= -->
+
+    <section class="seccion">
+
+        <h2>
+            Tiempos de reparación
+        </h2>
+
+        <p>
+            Tiempo registrado en las intervenciones de mantenimiento.
+        </p>
+
+
+        <div class="tabla-contenedor">
+
+            <table class="tabla-solicitudes">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            OT
+                        </th>
+
+                        <th>
+                            Máquina
+                        </th>
+
+                        <th>
+                            Técnico
+                        </th>
+
+                        <th>
+                            Inicio
+                        </th>
+
+                        <th>
+                            Fin
+                        </th>
+
+                        <th>
+                            Tiempo
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tablaTiempos">
+
+                    <tr>
+
+                        <td colspan="6">
+                            Cargando información...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="../js/reportes-gerente.js"></script>
+
+<script src="../js/cerrar-sesion.js"></script>
+
+
+</body>
+
+</html>
