@@ -6,13 +6,13 @@ const {
     listarOrdenesTecnico,
     obtenerDetalleOrden,
     listarRepuestos,
-    obtenerIntervencionOrden,
-    obtenerRepuestosOrdenTecnico,
     registrarDiagnostico,
     registrarTiempo,
     registrarEstado,
     registrarRepuesto,
-    cerrarOrdenTecnico
+    cerrarOrdenTecnico,
+    obtenerIntervencionOrden,
+    obtenerRepuestosOrdenTecnico
 } = require("../controllers/tecnico.controller");
 
 
@@ -97,7 +97,7 @@ router.patch(
 
 
 // =====================================================
-// REGISTRAR REPUESTO
+// REPUESTO
 // =====================================================
 
 router.post(

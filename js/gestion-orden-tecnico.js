@@ -3,36 +3,14 @@ const rol = localStorage.getItem("rol");
 
 
 if (!usuario || !rol) {
-
-    window.location.href =
-        "../index.html";
-
+    window.location.href = "../index.html";
 }
 
 
 if (rol !== "tecnico") {
-
-    window.location.href =
-        "../index.html";
-
+    window.location.href = "../index.html";
 }
 
-/* =====================================================
-   MOSTRAR USUARIO
-   ===================================================== */
-
-const usuarioSesion =
-    document.getElementById(
-        "usuarioSesion"
-    );
-
-
-if (usuarioSesion) {
-
-    usuarioSesion.textContent =
-        usuario;
-
-}
 
 /* =====================================================
    OBTENER ID DE LA ORDEN
@@ -49,10 +27,8 @@ const idOrden =
 
 
 if (!idOrden) {
-
     window.location.href =
         "ordenes-tecnico.html";
-
 }
 
 
@@ -367,7 +343,11 @@ async function cargarIntervencion() {
         ) {
 
             tiempoReparacion.value =
-                intervencion.tiempo_reparacion;
+                Math.round(
+                    Number(
+                        intervencion.tiempo_reparacion
+                    )
+                );
 
         }
 
@@ -460,6 +440,7 @@ async function guardarDiagnostico() {
         mensajeDiagnostico.textContent =
             "Diagnóstico registrado correctamente.";
 
+
         await cargarIntervencion();
 
 
@@ -527,8 +508,16 @@ async function guardarTiempo() {
         );
 
 
+    /*
+       El tiempo se guarda en horas enteras.
+       Math.round() redondea al número entero
+       más cercano.
+    */
+
     const horas =
-        (minutos / 60).toFixed(2);
+        Math.round(
+            minutos / 60
+        );
 
 
     tiempoReparacion.value =
@@ -713,8 +702,6 @@ async function cargarRepuestos() {
             '<option value="">Seleccione un repuesto</option>';
 
 
-        // El backend puede devolver directamente
-        // el arreglo o un objeto con la propiedad repuestos.
         const listaRepuestos =
             Array.isArray(datos)
                 ? datos
@@ -1145,7 +1132,46 @@ if (botonCerrar) {
 
 }
 
+function calcularTiempoReparacion() {
 
+    if (!fechaInicio.value || !fechaFin.value) {
+        tiempoReparacion.value = "";
+        return;
+    }
+
+    const inicio = new Date(fechaInicio.value);
+    const fin = new Date(fechaFin.value);
+
+    if (fin <= inicio) {
+        tiempoReparacion.value = "";
+        return;
+    }
+
+    const diferenciaMilisegundos =
+        fin.getTime() - inicio.getTime();
+
+    const minutos =
+        Math.round(
+            diferenciaMilisegundos / 60000
+        );
+
+    const horas =
+        Math.round(
+            minutos / 60
+        );
+
+    tiempoReparacion.value = horas;
+}
+
+fechaInicio.addEventListener(
+    "change",
+    calcularTiempoReparacion
+);
+
+fechaFin.addEventListener(
+    "change",
+    calcularTiempoReparacion
+);
 /* =====================================================
    INICIAR
    ===================================================== */

@@ -1722,3 +1722,86 @@ select:focus {
     }
 
 }
+
+/* =====================================================
+   DESCRIPCIÓN EN TABLAS DE REPORTES
+   ===================================================== */
+
+.tabla-solicitudes td.descripcion-reporte {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.4;
+    max-width: 300px;
+    min-width: 220px;
+}
+/* =====================================================
+   RESPONSIVE - MENU MOVIL
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .encabezado {
+        padding: 0 16px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    .logo span {
+        font-size: 12px;
+    }
+
+    .usuario-sesion {
+        font-size: 11px;
+        max-width: 45%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .menu {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        padding: 8px;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    .menu nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .menu a {
+        flex: 1 1 calc(33.333% - 6px);
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 10px 5px;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        font-size: 12px;
+    }
+
+    .menu-icono {
+        margin-right: 5px;
+    }
+
+    .contenido {
+        margin-left: 0 !important;
+        padding: 205px 16px 30px 16px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

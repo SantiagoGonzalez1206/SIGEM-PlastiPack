@@ -26,13 +26,24 @@
     <header class="encabezado">
 
         <div class="logo">
+
             <h1>SIGEM</h1>
-            <span>Gestión de mantenimiento</span>
+
+            <span>
+                Gestión de mantenimiento
+            </span>
+
         </div>
 
+
         <div class="usuario-sesion">
+
             <span>●</span>
-            <span id="usuarioSesion">Jefe de mantenimiento</span>
+
+            <span id="usuarioSesion">
+                Cargando usuario...
+            </span>
+
         </div>
 
     </header>
@@ -71,7 +82,7 @@
             <a href="historial.html">
 
                 <span class="menu-icono">
-                    ◫
+                    ▣
                 </span>
 
                 Historial
@@ -112,6 +123,10 @@
 
 
 
+        <!-- =====================================================
+             INFORMACIÓN DE LA ORDEN
+             ===================================================== -->
+
         <section class="seccion">
 
             <h2>
@@ -119,9 +134,7 @@
             </h2>
 
 
-            <div
-                id="informacionOrden"
-            >
+            <div id="informacionOrden">
 
                 Cargando información...
 
@@ -131,16 +144,21 @@
 
 
 
+        <!-- =====================================================
+             GESTIÓN DE LA INTERVENCIÓN
+             ===================================================== -->
+
         <section class="seccion">
 
             <h2>
-                Diagnóstico
+                Información de la intervención
             </h2>
 
 
-            <form
-                id="formularioDiagnostico"
-            >
+            <form id="formularioGestion">
+
+
+                <!-- DIAGNÓSTICO -->
 
                 <div class="campo">
 
@@ -151,66 +169,28 @@
                     <textarea
                         id="diagnostico"
                         rows="5"
+                        placeholder="Describe el diagnóstico realizado durante la intervención."
                         required
                     ></textarea>
 
                 </div>
 
 
-                <div class="campo">
 
-                    <label for="fechaInicio">
-                        Fecha y hora de inicio
-                    </label>
-
-                    <input
-                        type="datetime-local"
-                        id="fechaInicio"
-                        required
-                    >
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="boton-principal"
-                >
-                    Guardar diagnóstico
-                </button>
-
-
-                <p id="mensajeDiagnostico"></p>
-
-            </form>
-
-        </section>
-
-
-
-        <section class="seccion">
-
-            <h2>
-                Tiempo de reparación
-            </h2>
-
-
-            <form
-                id="formularioTiempo"
-            >
+                <!-- TIEMPO -->
 
                 <div class="formulario-grid">
 
 
                     <div class="campo">
 
-                        <label for="tiempoInicio">
-                            Inicio
+                        <label for="fechaInicio">
+                            Fecha y hora de inicio
                         </label>
 
                         <input
                             type="datetime-local"
-                            id="tiempoInicio"
+                            id="fechaInicio"
                             required
                         >
 
@@ -219,13 +199,13 @@
 
                     <div class="campo">
 
-                        <label for="tiempoFin">
-                            Finalización
+                        <label for="fechaFin">
+                            Fecha y hora de finalización
                         </label>
 
                         <input
                             type="datetime-local"
-                            id="tiempoFin"
+                            id="fechaFin"
                             required
                         >
 
@@ -233,6 +213,7 @@
 
 
                 </div>
+
 
 
                 <div class="campo">
@@ -245,44 +226,24 @@
                         type="number"
                         id="tiempoReparacion"
                         min="0"
-                        step="0.01"
-                        required
+                        step="1"
+                        readonly
                     >
+
+                    <small>
+                        El sistema calcula automáticamente el tiempo a partir de las fechas.
+                    </small>
 
                 </div>
 
 
-                <button
-                    type="submit"
-                    class="boton-principal"
-                >
-                    Guardar tiempo
-                </button>
 
-
-                <p id="mensajeTiempo"></p>
-
-            </form>
-
-        </section>
-
-
-
-        <section class="seccion">
-
-            <h2>
-                Estado del equipo
-            </h2>
-
-
-            <form
-                id="formularioEstado"
-            >
+                <!-- ESTADO -->
 
                 <div class="campo">
 
                     <label for="estadoEquipo">
-                        Estado
+                        Estado final de la máquina
                     </label>
 
                     <select
@@ -311,32 +272,8 @@
                 </div>
 
 
-                <button
-                    type="submit"
-                    class="boton-principal"
-                >
-                    Actualizar estado
-                </button>
 
-
-                <p id="mensajeEstado"></p>
-
-            </form>
-
-        </section>
-
-
-
-        <section class="seccion">
-
-            <h2>
-                Repuestos utilizados
-            </h2>
-
-
-            <form
-                id="formularioRepuesto"
-            >
+                <!-- REPUESTO -->
 
                 <div class="formulario-grid">
 
@@ -344,16 +281,13 @@
                     <div class="campo">
 
                         <label for="repuesto">
-                            Repuesto
+                            Repuesto utilizado
                         </label>
 
-                        <select
-                            id="repuesto"
-                            required
-                        >
+                        <select id="repuesto">
 
                             <option value="">
-                                Selecciona un repuesto
+                                No se utilizó repuesto
                             </option>
 
                         </select>
@@ -372,7 +306,7 @@
                             id="cantidadRepuesto"
                             min="1"
                             step="1"
-                            required
+                            placeholder="Cantidad"
                         >
 
                     </div>
@@ -381,98 +315,39 @@
                 </div>
 
 
+
+                <!-- MENSAJE -->
+
+                <p id="mensajeGestion"></p>
+
+
+
+                <!-- ÚNICO BOTÓN -->
+
                 <button
                     type="submit"
                     class="boton-principal"
                 >
-                    Registrar repuesto
+                    Cerrar orden de trabajo
                 </button>
 
 
-                <p id="mensajeRepuesto"></p>
-
             </form>
 
-
-            <div class="tabla-contenedor">
-
-                <table class="tabla-solicitudes">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Código
-                            </th>
-
-                            <th>
-                                Repuesto
-                            </th>
-
-                            <th>
-                                Cantidad
-                            </th>
-
-                            <th>
-                                Costo unitario
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="listaRepuestos">
-
-                        <tr>
-
-                            <td colspan="4">
-                                Cargando...
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
         </section>
 
-
-
-        <section class="seccion">
-
-            <h2>
-                Finalizar orden
-            </h2>
-
-
-            <p>
-                La orden solo podrá cerrarse cuando
-                tenga diagnóstico y tiempo de reparación.
-            </p>
-
-
-            <button
-                type="button"
-                id="botonCerrarOrden"
-                class="boton-principal"
-            >
-                Cerrar orden de trabajo
-            </button>
-
-
-            <p id="mensajeCierre"></p>
-
-        </section>
 
 
     </main>
 
+    <script>
+        const usuarioSesion = localStorage.getItem("usuario");
 
+        if (usuarioSesion) {
+            document.getElementById("usuarioSesion").textContent =
+                usuarioSesion;
+        }
+    </script>
 
     <script src="../js/gestion-orden-tecnico.js"></script>
 

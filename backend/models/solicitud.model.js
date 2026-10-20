@@ -1,5 +1,6 @@
 const conexion = require("../config/database");
 
+
 async function obtenerSolicitudes() {
 
     const [filas] = await conexion.query(`
@@ -24,6 +25,7 @@ async function obtenerSolicitudes() {
 
     return filas;
 }
+
 
 async function obtenerSolicitudesPorUsuario(usuario) {
 
@@ -62,19 +64,22 @@ async function crearSolicitud(
     codigoMaquina
 ) {
 
-    const conexionTransaccion = await conexion.getConnection();
+    const conexionTransaccion =
+        await conexion.getConnection();
 
     try {
 
         await conexionTransaccion.beginTransaction();
 
 
-        const [usuarios] = await conexionTransaccion.query(
-            `SELECT id_usuario
-             FROM usuario
-             WHERE usuario_institucional = ?`,
-            [usuario]
-        );
+        const [usuarios] =
+            await conexionTransaccion.query(
+                `SELECT id_usuario
+                 FROM usuario
+                 WHERE usuario_institucional = ?`,
+                [usuario]
+            );
+
 
         if (usuarios.length === 0) {
 
@@ -83,15 +88,19 @@ async function crearSolicitud(
             return null;
         }
 
-        const idUsuario = usuarios[0].id_usuario;
+
+        const idUsuario =
+            usuarios[0].id_usuario;
 
 
-        const [maquinas] = await conexionTransaccion.query(
-            `SELECT id_maquina
-             FROM maquina
-             WHERE codigo = ?`,
-            [codigoMaquina]
-        );
+        const [maquinas] =
+            await conexionTransaccion.query(
+                `SELECT id_maquina
+                 FROM maquina
+                 WHERE codigo = ?`,
+                [codigoMaquina]
+            );
+
 
         if (maquinas.length === 0) {
 
@@ -100,7 +109,9 @@ async function crearSolicitud(
             return null;
         }
 
-        const idMaquina = maquinas[0].id_maquina;
+
+        const idMaquina =
+            maquinas[0].id_maquina;
 
 
         const [resultadoSolicitud] =
@@ -126,41 +137,15 @@ async function crearSolicitud(
             );
 
 
-        const idSolicitud = resultadoSolicitud.insertId;
-
-
-        const [ultimoOrden] =
-            await conexionTransaccion.query(
-                `SELECT MAX(numero_consecutivo) AS ultimo
-                 FROM orden_de_trabajo`
-            );
-
-
-        const numeroConsecutivo =
-            (ultimoOrden[0].ultimo || 1000) + 1;
-
-
-        await conexionTransaccion.query(
-            `INSERT INTO orden_de_trabajo
-            (
-                numero_consecutivo,
-                prioridad,
-                estado,
-                id_solicitud,
-                id_tecnico
-            )
-            VALUES (?, ?, 'Pendiente', ?, NULL)`,
-            [
-                numeroConsecutivo,
-                prioridad,
-                idSolicitud
-            ]
-        );
+        const idSolicitud =
+            resultadoSolicitud.insertId;
 
 
         await conexionTransaccion.commit();
 
+
         return idSolicitud;
+
 
     } catch (error) {
 
@@ -171,12 +156,17 @@ async function crearSolicitud(
     } finally {
 
         conexionTransaccion.release();
+
     }
 }
 
 
 module.exports = {
+
     obtenerSolicitudes,
+
     obtenerSolicitudesPorUsuario,
+
     crearSolicitud
+
 };
